@@ -1,0 +1,175 @@
+%%
+%% This is file `csuthesis-graduate.ltx',
+%% generated with the docstrip utility.
+%%
+%% The original source files were:
+%%
+%% csuthesis.dtx  (with options: `graduate')
+%% 
+%% Copyright (C) 2009-2017 by weijianwen <weijianwen@gmail.com>
+%%           (C) 2018-2020 by CSUG
+%% 
+%% This file may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either version 1.3c
+%% of this license or (at your option) any later version.
+%% The latest version of this license is in
+%%     https://www.latex-project.org/lppl.txt
+%% and version 1.3c or later is part of all distributions of LaTeX
+%% version 2005/12/01 or later.
+%% 
+%% This file has the LPPL maintenance status "maintained".
+%% 
+%% The Current Maintainer of this work is Alexara Wu.
+%% 
+\ProvidesFile{csuthesis-graduate.ltx}
+  [2020/07/31 1.0.0rc7 Shanghai Jiao Tong University Thesis Template]
+\geometry{%
+  paper      = a4paper,
+  top        = 3.5cm,
+  bottom     = 4.0cm,
+  left       = 3.3cm,
+  right      = 2.8cm,
+  headheight = 1.0cm,
+  headsep    = 0.5cm,
+}
+\pagestyle{fancy}
+\newcommand\csu@thepage@format[2]{---~{\bfseries{#1}}~---}
+\def\csu@info@fund{}
+\fancypagestyle{title}{%
+  \fancyhf{}
+  \fancyfoot[L]{\ifcsu@review\relax\else\csu@info@fund\fi}
+  \renewcommand\headrulewidth{0pt}
+  \renewcommand\footrulewidth{0pt}
+}
+\fancypagestyle{plain}{%
+  \fancyhf{}
+  \ifcsu@style@header@single
+    \fancyhead[C]{\zihao{-5}\csu@name@subject@zh}
+  \else
+    \fancyhead[RE,LO]{\zihao{-5}\csu@name@subject@zh}
+    \fancyhead[RO,LE]{\zihao{-5}\leftmark}
+  \fi
+  \fancyfoot[C]{%
+    \ifcsu@page@numbering
+      \zihao{-5}\csu@thepage@format{\csu@thepage}{\csu@lastpageref}%
+    \fi
+  }
+  \renewcommand\headrule{%
+    \hrule\@height2.25pt\@width\headwidth
+    \vskip 0.75pt
+    \hrule\@height0.75pt\@width\headwidth
+    \vskip-3.75pt
+  }
+}
+\renewcommand\cftchapfont{\bfseries\heiti}
+\renewcommand\cftchapleader{\normalfont\cftdotfill{\cftdotsep}}
+\NewDocumentEnvironment{abstract}{}{%
+  \csu@chapter*[\csu@name@abstract@zh]{%
+    \csu@info@title@zh \vskip 2ex
+    \begingroup
+      \csu@name@abstract@zh
+    \endgroup
+  }[\csu@name@abstract]%
+  \zihao{4}
+}{%
+  \vskip 3ex \noindent
+  \begingroup
+    \heiti\csu@name@keywords@zh
+  \endgroup
+  \begingroup
+    \csu@clist@use{\csu@info@keywords@zh}{，}
+  \endgroup
+}
+\NewDocumentEnvironment{abstract*}{}{%
+  \csu@chapter*[\csu@name@abstract@en]{%
+    \MakeUppercase\csu@info@title@en \vskip 2ex
+    \begingroup
+      \MakeUppercase\csu@name@abstract@en
+    \endgroup
+  }[]
+  \zihao{4}
+}{%
+  \vskip 3ex \noindent
+  \begingroup
+    \bfseries\MakeUppercase
+    \csu@name@keywords@en
+  \endgroup
+  \begingroup
+    \csu@clist@use{\csu@info@keywords@en}{, }
+  \endgroup
+}
+\RenewDocumentCommand{\maketitle}{}{%
+  \csu@pdfbookmark{0}{\csu@name@titlepage}
+  \csu@make@titlepage@zh%
+  \csu@make@titlepage@en%
+}
+\newcommand\csu@make@titlepage@zh{%
+  \cleardoublepage
+  \def\csu@info@fund{\zihao{-5}\csu@clist@use{\csu@info@fund@zh}{\par}}
+  \thispagestyle{title}
+  \begin{center}
+    \vspace*{28pt}
+    {\zihao{-2}\csu@name@subject@zh\par}
+    \vskip \stretch{4}
+    {\zihao{2}\heiti\csu@info@title@zh\par}
+    \vskip \stretch{5}
+    \begingroup
+      \zihao{4}
+      \def\arraystretch{1.25}
+      \begin{tabular}
+        {>{\begin{CJKfilltwosides}[t]{6.5\ccwd}\heiti}r<{\end{CJKfilltwosides}}
+          @{：}l}
+        \csu@name@author@zh           & \csu@info@author@zh         \\
+        \csu@name@id@zh               & \csu@info@id                \\
+        \csu@name@supervisor@zh       & \csu@info@supervisor@zh     \\
+        \ifx\csu@info@assisupervisor@zh\@empty\else
+          \csu@name@assisupervisor@zh & \csu@info@assisupervisor@zh \\
+        \fi
+        \csu@name@degree@zh           & \csu@info@degree@zh         \\
+        \csu@name@major@zh            & \csu@info@major@zh          \\
+        \csu@name@department@zh       & \csu@info@department@zh     \\
+        \csu@name@defenddate@zh       &
+          \csu@date{\csu@date@format@zh}{\csu@info@date}           \\
+        \csu@name@conferring@zh       & \csu@name@school@zh         \\
+      \end{tabular}
+      \par
+    \endgroup
+    \vskip 26pt
+  \end{center}
+}
+\newcommand\csu@make@titlepage@en{%
+  \cleardoublepage
+  \def\csu@info@fund{\zihao{-5}\csu@clist@use{\csu@info@fund@en}{\par}}
+  \thispagestyle{title}
+  \begin{center}
+    \vspace*{28pt}
+    {\zihao{-2}\csu@name@subject@en\par}
+    \vskip \stretch{4}
+    {\zihao{2}\bfseries\MakeUppercase\csu@info@title@en\par}
+    \vskip \stretch{5}
+    \begingroup
+      \zihao{4}
+      \def\arraystretch{1.25}
+      \begin{tabular}
+        {>{\bfseries}l<{:~}p{.45\textwidth}}
+        \csu@name@author@en           & \csu@info@author@en         \\
+        \csu@name@id@en               & \csu@info@id                \\
+        \csu@name@supervisor@en       & \csu@info@supervisor@en     \\
+        \ifx\csu@info@assisupervisor@en\@empty\else
+          \csu@name@assisupervisor@en & \csu@info@assisupervisor@en \\
+        \fi
+        \csu@name@degree@en           & \csu@info@degree@en         \\
+        \csu@name@major@en            & \csu@info@major@en          \\
+        \csu@name@department@en       & \csu@info@department@en     \\
+        \csu@name@defenddate@en       &
+          \csu@date{\csu@date@format@en}{\csu@info@date}           \\
+        \csu@name@conferring@en       & \csu@name@school@en         \\
+      \end{tabular}
+      \par
+    \endgroup
+    \vskip 26pt
+  \end{center}
+}
+\endinput
+%%
+%% End of file `csuthesis-graduate.ltx'.

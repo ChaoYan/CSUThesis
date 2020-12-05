@@ -1,13 +1,13 @@
 %%
-%% This is file `sjtuthesis.cls',
+%% This is file `csuthesis.cls',
 %% generated with the docstrip utility.
 %%
 %% The original source files were:
 %%
-%% sjtuthesis.dtx  (with options: `class')
+%% csuthesis.dtx  (with options: `class')
 %% 
 %% Copyright (C) 2009-2017 by weijianwen <weijianwen@gmail.com>
-%%           (C) 2018-2020 by SJTUG
+%%           (C) 2018-2020 by CSUG
 %% 
 %% This file may be distributed and/or modified under the
 %% conditions of the LaTeX Project Public License, either version 1.3c
@@ -22,34 +22,34 @@
 %% The Current Maintainer of this work is Alexara Wu.
 %% 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{sjtuthesis}
+\ProvidesClass{csuthesis}
   [2020/07/31 1.0.0rc7 Shanghai Jiao Tong University Thesis Template]
-\hyphenation{SJTU-Thesis}
-\def\sjtuthesis{SJTU\textsc{Thesis}}
+\hyphenation{CSU-Thesis}
+\def\csuthesis{CSU\textsc{Thesis}}
 \def\version{1.0.0rc7}
-\newcommand\sjtu@error[1]{%
-  \ClassError{sjtuthesis}{#1}{}%
+\newcommand\csu@error[1]{%
+  \ClassError{csuthesis}{#1}{}%
 }
-\newcommand\sjtu@warning[1]{%
-  \ClassWarning{sjtuthesis}{#1}{}%
+\newcommand\csu@warning[1]{%
+  \ClassWarning{csuthesis}{#1}{}%
 }
 \RequirePackage{kvdefinekeys}
 \RequirePackage{kvsetkeys}
 \RequirePackage{kvoptions}
 \SetupKeyvalOptions{
-  family=sjtu,
-  prefix=sjtu@,
+  family=csu,
+  prefix=csu@,
   setkeys=\kvsetkeys}
-\newcommand\sjtusetup[1]{%
-  \kvsetkeys{sjtu}{#1}%
+\newcommand\csusetup[1]{%
+  \kvsetkeys{csu}{#1}%
 }
-\newcommand\sjtu@define@key[2]{%
+\newcommand\csu@define@key[2]{%
   \kvsetkeys{#1@key}{#2}%
 }
-\newcommand\sjtu@set@family@handler[1]{%
+\newcommand\csu@set@family@handler[1]{%
   \kv@set@family@handler{#1@key}{%
-    \def\sjtu@@initial{}%
-    \def\sjtu@@choices{}%
+    \def\csu@@initial{}%
+    \def\csu@@choices{}%
     \@namedef{#1@##1@@default}{}%
     \@namedef{#1@##1@@check}{}%
     \@namedef{#1@##1@@code}{}%
@@ -58,20 +58,20 @@
       \@namedef{#1@##1@@name}{####1}%
     }%
     \kv@define@key{#1@value}{choices}{%
-      \def\sjtu@@choices{####1}%
+      \def\csu@@choices{####1}%
       \@namedef{#1@##1@@reset}{}%
       \@namedef{#1@##1@@check}{%
         \@ifundefined{%
           if#1@\@nameuse{#1@##1@@name}@\@nameuse{#1@\@nameuse{#1@##1@@name}}%
         }{%
-          \sjtu@error{Invalid value `##1 = \@nameuse{#1@\@nameuse{#1@##1@@name}}'}%
+          \csu@error{Invalid value `##1 = \@nameuse{#1@\@nameuse{#1@##1@@name}}'}%
         }%
         \@nameuse{#1@##1@@reset}%
         \@nameuse{#1@\@nameuse{#1@##1@@name}@\@nameuse{#1@\@nameuse{#1@##1@@name}}true}%
       }%
     }%
     \kv@define@key{#1@value}{initial}{%
-      \def\sjtu@@initial{####1}%
+      \def\csu@@initial{####1}%
       \expandafter\ifx\csname #1@##1@@default\endcsname\@empty
         \@namedef{#1@##1@@default}{####1}%
       \fi
@@ -82,8 +82,8 @@
     \kvsetkeys{#1@value}{##2}%
     \@namedef{#1@\@nameuse{#1@##1@@name}}{}%
     \kv@set@family@handler{#1@choice}{%
-      \ifx\sjtu@@initial\@empty
-        \def\sjtu@@initial{####1}%
+      \ifx\csu@@initial\@empty
+        \def\csu@@initial{####1}%
       \fi
       \expandafter\ifx\csname #1@##1@@default\endcsname\@empty
         \@namedef{#1@##1@@default}{####1}%
@@ -93,8 +93,8 @@
         \@nameuse{#1@\@nameuse{#1@##1@@name}@####1false}%
       }%
     }%
-    \kvsetkeys@expandafter{#1@choice}{\sjtu@@choices}%
-    \expandafter\let\csname #1@\@nameuse{#1@##1@@name}\endcsname\sjtu@@initial
+    \kvsetkeys@expandafter{#1@choice}{\csu@@choices}%
+    \expandafter\let\csname #1@\@nameuse{#1@##1@@name}\endcsname\csu@@initial
     \expandafter\ifx\csname #1@\@nameuse{#1@##1@@name}\endcsname\@empty\else
       \@nameuse{#1@##1@@check}%
     \fi
@@ -105,11 +105,11 @@
     }%
   }
 }
-\newcommand\sjtu@option@hook[3]{%
+\newcommand\csu@option@hook[3]{%
   \expandafter\g@addto@macro\csname #1@#2@@code\endcsname{#3}%
 }
-\sjtu@set@family@handler{sjtu}
-\sjtu@define@key{sjtu}{
+\csu@set@family@handler{csu}
+\csu@define@key{csu}{
   type = {
     choices = {
       doctor,
@@ -152,29 +152,29 @@
 \DeclareBoolOption[false]{continuous}
 \DeclareDefaultOption{\PassOptionsToClass{\CurrentOption}{ctexbook}}
 \ProcessKeyvalOptions*
-\newif\ifsjtu@type@graduate
-\sjtu@type@graduatefalse
-\ifsjtu@type@doctor
-  \sjtu@type@graduatetrue
+\newif\ifcsu@type@graduate
+\csu@type@graduatefalse
+\ifcsu@type@doctor
+  \csu@type@graduatetrue
 \fi
-\ifsjtu@type@master
-  \sjtu@type@graduatetrue
+\ifcsu@type@master
+  \csu@type@graduatetrue
 \fi
-\ifsjtu@zihao@auto
-  \ifsjtu@type@graduate
-    \def\sjtu@zihao{-4}
+\ifcsu@zihao@auto
+  \ifcsu@type@graduate
+    \def\csu@zihao{-4}
   \else
-    \def\sjtu@zihao{5}
+    \def\csu@zihao{5}
   \fi
 \fi
-\PassOptionsToClass{zihao=\sjtu@zihao}{ctexbook}
+\PassOptionsToClass{zihao=\csu@zihao}{ctexbook}
 \PassOptionsToPackage{no-math,quiet}{fontspec}
 \LoadClass[a4paper,UTF8,scheme=plain,linespread=1.3]{ctexbook}[2018/04/01]
 \AtEndOfClass{
-  \ifsjtu@type@graduate
-    \input{sjtuthesis-graduate.ltx}
+  \ifcsu@type@graduate
+    \input{csuthesis-graduate.ltx}
   \else
-    \input{sjtuthesis-undergraduate.ltx}
+    \input{csuthesis-undergraduate.ltx}
   \fi
 }
 \RequirePackage{xparse}
@@ -203,28 +203,28 @@
 \RequirePackage{url}
 \RequirePackage{silence}
 \WarningFilter{pageslts}{Package pdfpages detected}
-\newcommand\sjtu@package@conflict[2]{
+\newcommand\csu@package@conflict[2]{
   \AtBeginOfPackageFile*{#2}{
-    \sjtu@error{The `#2' package is incompatible with required `#1'}
+    \csu@error{The `#2' package is incompatible with required `#1'}
   }
 }
-\sjtu@package@conflict{unicode-math}{amscd}
-\sjtu@package@conflict{unicode-math}{amsfonts}
-\sjtu@package@conflict{unicode-math}{amssymb}
-\sjtu@package@conflict{unicode-math}{bbm}
-\sjtu@package@conflict{unicode-math}{bm}
-\sjtu@package@conflict{unicode-math}{eucal}
-\sjtu@package@conflict{unicode-math}{eufrak}
-\sjtu@package@conflict{unicode-math}{mathrsfs}
-\newcommand\sjtu@patchcmd[3]{%
+\csu@package@conflict{unicode-math}{amscd}
+\csu@package@conflict{unicode-math}{amsfonts}
+\csu@package@conflict{unicode-math}{amssymb}
+\csu@package@conflict{unicode-math}{bbm}
+\csu@package@conflict{unicode-math}{bm}
+\csu@package@conflict{unicode-math}{eucal}
+\csu@package@conflict{unicode-math}{eufrak}
+\csu@package@conflict{unicode-math}{mathrsfs}
+\newcommand\csu@patchcmd[3]{%
   \patchcmd{#1}{#2}{#3}{}%
-    {\sjtu@warning{Oops! Command `\protect#1' is NOT patchable.}}
+    {\csu@warning{Oops! Command `\protect#1' is NOT patchable.}}
 }
-\kv@define@key{sjtu}{style}{
-  \kvsetkeys{sjtu@style}{#1}
+\kv@define@key{csu}{style}{
+  \kvsetkeys{csu@style}{#1}
 }
-\sjtu@set@family@handler{sjtu@style}
-\sjtu@define@key{sjtu@style}{
+\csu@set@family@handler{csu@style}
+\csu@define@key{csu@style}{
   frontmatter-numbering = {
     name = frontmatter@numbering,
     choices = {
@@ -275,11 +275,11 @@
     initial = {--},
   },
 }
-\kv@define@key{sjtu}{info}{
-  \kvsetkeys{sjtu@info}{#1}
+\kv@define@key{csu}{info}{
+  \kvsetkeys{csu@info}{#1}
 }
-\sjtu@set@family@handler{sjtu@info}
-\sjtu@define@key{sjtu@info}{
+\csu@set@family@handler{csu@info}
+\csu@define@key{csu@info}{
   title           = { name = title@zh },
   title*          = { name = title@en },
   keywords        = { name = keywords@zh },
@@ -305,52 +305,52 @@
     initial = {\the\year-\two@digits{\month}-\two@digits{\day}},
   },
 }
-\newcommand\sjtu@nopar[1]{%
+\newcommand\csu@nopar[1]{%
   \begingroup\let\\\@empty#1\endgroup%
 }
-\newcommand\sjtu@clist@use[2]{%
-  \def\sjtu@@tmp{}%
-  \def\sjtu@clist@processor##1{%
-    \ifx\sjtu@@tmp\@empty
-      \def\sjtu@@tmp{#2}%
+\newcommand\csu@clist@use[2]{%
+  \def\csu@@tmp{}%
+  \def\csu@clist@processor##1{%
+    \ifx\csu@@tmp\@empty
+      \def\csu@@tmp{#2}%
     \else
       #2%
     \fi
     ##1%
   }%
-  \expandafter\comma@parse\expandafter{#1}{\sjtu@clist@processor}%
+  \expandafter\comma@parse\expandafter{#1}{\csu@clist@processor}%
 }
-\ifsjtu@language@chinese
-  \def\sjtu@info@title{\sjtu@info@title@zh}
-  \def\sjtu@info@keywords{\sjtu@info@keywords@zh}
-  \def\sjtu@info@author{\sjtu@info@author@zh}
+\ifcsu@language@chinese
+  \def\csu@info@title{\csu@info@title@zh}
+  \def\csu@info@keywords{\csu@info@keywords@zh}
+  \def\csu@info@author{\csu@info@author@zh}
 \else
-  \def\sjtu@info@title{\sjtu@info@title@en}
-  \def\sjtu@info@keywords{\sjtu@info@keywords@en}
-  \def\sjtu@info@author{\sjtu@info@author@en}
+  \def\csu@info@title{\csu@info@title@en}
+  \def\csu@info@keywords{\csu@info@keywords@en}
+  \def\csu@info@author{\csu@info@author@en}
 \fi
-\newcommand\sjtu@date[2]{%
-  \ifsjtu@review\relax\else
-    \edef\sjtu@@date{#2}%
-    \def\sjtu@@process@date##1-##2-##3\@nil{%
+\newcommand\csu@date[2]{%
+  \ifcsu@review\relax\else
+    \edef\csu@@date{#2}%
+    \def\csu@@process@date##1-##2-##3\@nil{%
       #1{##1}{##2}{##3}%
     }%
-    \expandafter\sjtu@@process@date\sjtu@@date\@nil
+    \expandafter\csu@@process@date\csu@@date\@nil
   \fi
 }
-\newcommand\sjtu@date@format@zh[3]{#1 年 \number#2 月 \number#3 日}
-\newcommand\sjtu@date@month@en[1]{%
+\newcommand\csu@date@format@zh[3]{#1 年 \number#2 月 \number#3 日}
+\newcommand\csu@date@month@en[1]{%
   \ifcase\number#1\or
     January\or February\or March\or April\or May\or June\or
     July\or August\or September\or October\or November\or December%
   \fi
 }
-\newcommand\sjtu@date@format@en[3]{\sjtu@date@month@en{#2} \number#3, #1}
-\kv@define@key{sjtu}{name}{
-  \kvsetkeys{sjtu@name}{#1}
+\newcommand\csu@date@format@en[3]{\csu@date@month@en{#2} \number#3, #1}
+\kv@define@key{csu}{name}{
+  \kvsetkeys{csu@name}{#1}
 }
-\sjtu@set@family@handler{sjtu@name}
-\sjtu@define@key{sjtu@name}{
+\csu@set@family@handler{csu@name}
+\csu@define@key{csu@name}{
   appendix          = { initial = Appendix },
   contents          = { initial = Contents },
   listfigure        = { initial = List of Figures },
@@ -370,96 +370,96 @@
   achievements      = { initial = Research Achievements },
   resume            = { initial = Resume },
 }
-\newcommand\sjtu@name@def[2]{%
-  \@namedef{sjtu@name@#1}{#2}
+\newcommand\csu@name@def[2]{%
+  \@namedef{csu@name@#1}{#2}
 }
-\sjtu@name@def{school@zh}{上海交通大学}
-\sjtu@name@def{school@en}{Shanghai Jiao Tong University}
-\ifsjtu@type@graduate
-  \ifsjtu@type@doctor
-    \sjtu@name@def{degree@type@zh}{博士}
-    \sjtu@name@def{degree@type@en}{Doctor}
+\csu@name@def{school@zh}{上海交通大学}
+\csu@name@def{school@en}{Shanghai Jiao Tong University}
+\ifcsu@type@graduate
+  \ifcsu@type@doctor
+    \csu@name@def{degree@type@zh}{博士}
+    \csu@name@def{degree@type@en}{Doctor}
   \else
-    \sjtu@name@def{degree@type@zh}{硕士}
-    \sjtu@name@def{degree@type@en}{Master}
+    \csu@name@def{degree@type@zh}{硕士}
+    \csu@name@def{degree@type@en}{Master}
   \fi
-  \sjtu@name@def{author@zh}{\sjtu@name@degree@type@zh 研究生}
-  \sjtu@name@def{author@en}{Candidate}
-  \sjtu@name@def{id@zh}{学号}
-  \sjtu@name@def{id@en}{Student ID}
-  \sjtu@name@def{supervisor@zh}{导师}
-  \sjtu@name@def{supervisor@en}{Supervisor}
-  \sjtu@name@def{assisupervisor@zh}{副导师}
-  \sjtu@name@def{assisupervisor@en}{Assistant Supervisor}
-  \sjtu@name@def{degree@zh}{申请学位}
-  \sjtu@name@def{degree@en}{Academic Degree Applied for}
-  \sjtu@name@def{major@zh}{学科}
-  \sjtu@name@def{major@en}{Speciality}
-  \sjtu@name@def{department@zh}{所在单位}
-  \sjtu@name@def{department@en}{Affiliation}
-  \sjtu@name@def{defenddate@zh}{答辩日期}
-  \sjtu@name@def{defenddate@en}{Date of Defence}
-  \sjtu@name@def{conferring@zh}{授予学位单位}
-  \sjtu@name@def{conferring@en}{Degree-Conferring-Institution}
-  \sjtu@name@def{thesis@type}{学位论文}
-  \sjtu@name@def{thesis@kind}{\sjtu@name@thesis@type}
-  \sjtu@name@def{subject@zh}{%
-    \sjtu@name@school@zh\sjtu@name@degree@type@zh\sjtu@name@thesis@type
+  \csu@name@def{author@zh}{\csu@name@degree@type@zh 研究生}
+  \csu@name@def{author@en}{Candidate}
+  \csu@name@def{id@zh}{学号}
+  \csu@name@def{id@en}{Student ID}
+  \csu@name@def{supervisor@zh}{导师}
+  \csu@name@def{supervisor@en}{Supervisor}
+  \csu@name@def{assisupervisor@zh}{副导师}
+  \csu@name@def{assisupervisor@en}{Assistant Supervisor}
+  \csu@name@def{degree@zh}{申请学位}
+  \csu@name@def{degree@en}{Academic Degree Applied for}
+  \csu@name@def{major@zh}{学科}
+  \csu@name@def{major@en}{Speciality}
+  \csu@name@def{department@zh}{所在单位}
+  \csu@name@def{department@en}{Affiliation}
+  \csu@name@def{defenddate@zh}{答辩日期}
+  \csu@name@def{defenddate@en}{Date of Defence}
+  \csu@name@def{conferring@zh}{授予学位单位}
+  \csu@name@def{conferring@en}{Degree-Conferring-Institution}
+  \csu@name@def{thesis@type}{学位论文}
+  \csu@name@def{thesis@kind}{\csu@name@thesis@type}
+  \csu@name@def{subject@zh}{%
+    \csu@name@school@zh\csu@name@degree@type@zh\csu@name@thesis@type
   }
-  \sjtu@name@def{subject@en}{%
-    Dissertation Submitted to \sjtu@name@school@en \\
-    for the Degree of \sjtu@name@degree@type@en
+  \csu@name@def{subject@en}{%
+    Dissertation Submitted to \csu@name@school@en \\
+    for the Degree of \csu@name@degree@type@en
   }
 \else
-  \ifsjtu@type@course
-    \sjtu@name@def{degree@type@zh}{}
-    \sjtu@name@def{degree@type@en}{}
-    \sjtu@name@def{thesis@type}{课程论文}
-    \sjtu@name@def{thesis@kind}{\sjtu@name@thesis@type}
-    \sjtu@name@def{subject@zh}{\sjtu@name@thesis@type}
-    \sjtu@name@def{subject@en}{Course Paper}
+  \ifcsu@type@course
+    \csu@name@def{degree@type@zh}{}
+    \csu@name@def{degree@type@en}{}
+    \csu@name@def{thesis@type}{课程论文}
+    \csu@name@def{thesis@kind}{\csu@name@thesis@type}
+    \csu@name@def{subject@zh}{\csu@name@thesis@type}
+    \csu@name@def{subject@en}{Course Paper}
   \else
-    \sjtu@name@def{degree@type@zh}{学士}
-    \sjtu@name@def{degree@type@en}{Bachelor}
-    \sjtu@name@def{thesis@type}{学位论文}
-    \sjtu@name@def{thesis@kind}{毕业设计（论文）}
-    \sjtu@name@def{subject@zh}{\sjtu@name@degree@type@zh\sjtu@name@thesis@type}
-    \sjtu@name@def{subject@en}{Thesis of \sjtu@name@degree@type@en}
+    \csu@name@def{degree@type@zh}{学士}
+    \csu@name@def{degree@type@en}{Bachelor}
+    \csu@name@def{thesis@type}{学位论文}
+    \csu@name@def{thesis@kind}{毕业设计（论文）}
+    \csu@name@def{subject@zh}{\csu@name@degree@type@zh\csu@name@thesis@type}
+    \csu@name@def{subject@en}{Thesis of \csu@name@degree@type@en}
   \fi
-  \sjtu@name@def{author@zh}{学生姓名}
-  \sjtu@name@def{id@zh}{学生学号}
-  \sjtu@name@def{supervisor@zh}{指导教师}
-  \sjtu@name@def{course@zh}{课程名称}
-  \sjtu@name@def{major@zh}{专业}
-  \sjtu@name@def{department@zh}{学院(系)}
-  \sjtu@name@def{digest}{英文大摘要}
+  \csu@name@def{author@zh}{学生姓名}
+  \csu@name@def{id@zh}{学生学号}
+  \csu@name@def{supervisor@zh}{指导教师}
+  \csu@name@def{course@zh}{课程名称}
+  \csu@name@def{major@zh}{专业}
+  \csu@name@def{department@zh}{学院(系)}
+  \csu@name@def{digest}{英文大摘要}
 \fi
-\sjtu@name@def{orig@subtitle@zh}{原创性声明}
-\sjtu@name@def{orig@subtitle@en}{Declaration of Originality}
-\sjtu@name@def{copr@subtitle@zh}{版权使用授权书}
-\sjtu@name@def{copr@subtitle@en}{Copyright Authorization}
-\sjtu@name@def{orig@title}{\sjtu@name@thesis@kind\sjtu@name@orig@subtitle@zh}
-\sjtu@name@def{copr@title}{\sjtu@name@thesis@kind\sjtu@name@copr@subtitle@zh}
-\sjtu@name@def{title@qouted}{《\sjtu@nopar\sjtu@info@title@zh》}
-\sjtu@name@def{origbody}{%
-  本人郑重声明：所呈交的\sjtu@name@thesis@kind\sjtu@name@title@qouted ，
+\csu@name@def{orig@subtitle@zh}{原创性声明}
+\csu@name@def{orig@subtitle@en}{Declaration of Originality}
+\csu@name@def{copr@subtitle@zh}{版权使用授权书}
+\csu@name@def{copr@subtitle@en}{Copyright Authorization}
+\csu@name@def{orig@title}{\csu@name@thesis@kind\csu@name@orig@subtitle@zh}
+\csu@name@def{copr@title}{\csu@name@thesis@kind\csu@name@copr@subtitle@zh}
+\csu@name@def{title@qouted}{《\csu@nopar\csu@info@title@zh》}
+\csu@name@def{origbody}{%
+  本人郑重声明：所呈交的\csu@name@thesis@kind\csu@name@title@qouted ，
   是本人在导师的指导下，独立进行研究工作所取得的成果。除文中已经注明引用
   的内容外，本论文不包含任何其他个人或集体已经发表或撰写过的作品成果。对
   本文的研究做出重要贡献的个人和集体，均已在文中以明确方式标明。本人完全
   意识到本声明的法律结果由本人承担。}
-\sjtu@name@def{coprbody}{%
-  本\sjtu@name@thesis@kind 作者
-  完全了解学校有关保留、使用\sjtu@name@thesis@kind 的规定，同意学校保留
+\csu@name@def{coprbody}{%
+  本\csu@name@thesis@kind 作者
+  完全了解学校有关保留、使用\csu@name@thesis@kind 的规定，同意学校保留
   并向国家有关部门或机构送交论文的复印件和电子版，允许论文被查阅和借阅。
-  本人授权\sjtu@name@school@zh 可以将本\sjtu@name@thesis@kind 的全部或部
+  本人授权\csu@name@school@zh 可以将本\csu@name@thesis@kind 的全部或部
   分内容编入有关数据库进行检索，可以采用影印、缩印或扫描等复制手段保存和
-  汇编本\sjtu@name@thesis@kind 。}
-\sjtu@name@def{abstract@zh}{摘\hspace{\ccwd}要}
-\sjtu@name@def{abstract@en}{Abstract}
-\sjtu@name@def{keywords@zh}{关键词：}
-\sjtu@name@def{keywords@en}{Key words:~}
-\ifsjtu@language@chinese
-  \sjtusetup{
+  汇编本\csu@name@thesis@kind 。}
+\csu@name@def{abstract@zh}{摘\hspace{\ccwd}要}
+\csu@name@def{abstract@en}{Abstract}
+\csu@name@def{keywords@zh}{关键词：}
+\csu@name@def{keywords@en}{Key words:~}
+\ifcsu@language@chinese
+  \csusetup{
     name = {
       appendix          = {附录},
       contents          = {目\hspace{\ccwd}录},
@@ -485,88 +485,88 @@
     chapter/name    = {第,章},
     chapter/number  = \chinese{chapter},
   }
-  \sjtu@name@def{titlepage}{扉页}
-  \sjtu@name@def{subject}{\sjtu@name@subject@zh}
-  \sjtu@name@def{orig@subtitle}{\sjtu@name@orig@subtitle@zh}
-  \sjtu@name@def{copr@subtitle}{\sjtu@name@copr@subtitle@zh}
-  \sjtu@name@def{abstract}{\sjtu@name@abstract@zh}
+  \csu@name@def{titlepage}{扉页}
+  \csu@name@def{subject}{\csu@name@subject@zh}
+  \csu@name@def{orig@subtitle}{\csu@name@orig@subtitle@zh}
+  \csu@name@def{copr@subtitle}{\csu@name@copr@subtitle@zh}
+  \csu@name@def{abstract}{\csu@name@abstract@zh}
 \else
-  \sjtu@name@def{titlepage}{Title Page}
-  \sjtu@name@def{subject}{\sjtu@name@subject@en}
-  \sjtu@name@def{orig@subtitle}{\sjtu@name@orig@subtitle@en}
-  \sjtu@name@def{copr@subtitle}{\sjtu@name@copr@subtitle@en}
-  \sjtu@name@def{abstract}{\sjtu@name@abstract@en}
+  \csu@name@def{titlepage}{Title Page}
+  \csu@name@def{subject}{\csu@name@subject@en}
+  \csu@name@def{orig@subtitle}{\csu@name@orig@subtitle@en}
+  \csu@name@def{copr@subtitle}{\csu@name@copr@subtitle@en}
+  \csu@name@def{abstract}{\csu@name@abstract@en}
 \fi
 \ctexset{%
-  appendixname   = \sjtu@name@appendix,
-  contentsname   = \sjtu@name@contents,
-  listfigurename = \sjtu@name@listfigure,
-  listtablename  = \sjtu@name@listtable,
-  figurename     = \sjtu@name@figure,
-  tablename      = \sjtu@name@table,
-  bibname        = \sjtu@name@bib,
-  indexname      = \sjtu@name@index,
+  appendixname   = \csu@name@appendix,
+  contentsname   = \csu@name@contents,
+  listfigurename = \csu@name@listfigure,
+  listtablename  = \csu@name@listtable,
+  figurename     = \csu@name@figure,
+  tablename      = \csu@name@table,
+  bibname        = \csu@name@bib,
+  indexname      = \csu@name@index,
 }
-\let\sjtu@font@family@xits\@empty
-\newcommand\sjtu@font@set@xits@names{%
-  \ifx\sjtu@font@family@xits\@empty
+\let\csu@font@family@xits\@empty
+\newcommand\csu@font@set@xits@names{%
+  \ifx\csu@font@family@xits\@empty
     \IfFontExistsTF{XITSMath-Regular.otf}{%
-      \gdef\sjtu@font@family@xits{XITS}%
-      \gdef\sjtu@font@style@xits@rm{Regular}%
-      \gdef\sjtu@font@style@xits@bf{Bold}%
-      \gdef\sjtu@font@style@xits@it{Italic}%
-      \gdef\sjtu@font@style@xits@bfit{BoldItalic}%
-      \gdef\sjtu@font@name@xits@math@rm{XITSMath-Regular}%
-      \gdef\sjtu@font@name@xits@math@bf{XITSMath-Bold}%
+      \gdef\csu@font@family@xits{XITS}%
+      \gdef\csu@font@style@xits@rm{Regular}%
+      \gdef\csu@font@style@xits@bf{Bold}%
+      \gdef\csu@font@style@xits@it{Italic}%
+      \gdef\csu@font@style@xits@bfit{BoldItalic}%
+      \gdef\csu@font@name@xits@math@rm{XITSMath-Regular}%
+      \gdef\csu@font@name@xits@math@bf{XITSMath-Bold}%
     }{%
-      \gdef\sjtu@font@family@xits{xits}%
-      \gdef\sjtu@font@style@xits@rm{regular}%
-      \gdef\sjtu@font@style@xits@bf{bold}%
-      \gdef\sjtu@font@style@xits@it{italic}%
-      \gdef\sjtu@font@style@xits@bfit{bolditalic}%
-      \gdef\sjtu@font@name@xits@math@rm{xits-math}%
-      \gdef\sjtu@font@name@xits@math@bf{xits-mathbold}%
+      \gdef\csu@font@family@xits{xits}%
+      \gdef\csu@font@style@xits@rm{regular}%
+      \gdef\csu@font@style@xits@bf{bold}%
+      \gdef\csu@font@style@xits@it{italic}%
+      \gdef\csu@font@style@xits@bfit{bolditalic}%
+      \gdef\csu@font@name@xits@math@rm{xits-math}%
+      \gdef\csu@font@name@xits@math@bf{xits-mathbold}%
     }%
   \fi
 }
-\let\sjtu@font@family@libertinus\@empty
-\newcommand\sjtu@font@set@libertinus@names{%
-  \ifx\sjtu@font@family@libertinus\@empty
+\let\csu@font@family@libertinus\@empty
+\newcommand\csu@font@set@libertinus@names{%
+  \ifx\csu@font@family@libertinus\@empty
     \IfFontExistsTF{LibertinusSerif-Regular.otf}{%
-      \gdef\sjtu@font@family@libertinus@serif{LibertinusSerif}%
-      \gdef\sjtu@font@family@libertinus@sans{LibertinusSans}%
-      \gdef\sjtu@font@name@libertinus@math{LibertinusMath-Regular}%
-      \gdef\sjtu@font@style@libertinus@rm{Regular}%
-      \gdef\sjtu@font@style@libertinus@bf{Bold}%
-      \gdef\sjtu@font@style@libertinus@it{Italic}%
-      \gdef\sjtu@font@style@libertinus@bfit{BoldItalic}%
+      \gdef\csu@font@family@libertinus@serif{LibertinusSerif}%
+      \gdef\csu@font@family@libertinus@sans{LibertinusSans}%
+      \gdef\csu@font@name@libertinus@math{LibertinusMath-Regular}%
+      \gdef\csu@font@style@libertinus@rm{Regular}%
+      \gdef\csu@font@style@libertinus@bf{Bold}%
+      \gdef\csu@font@style@libertinus@it{Italic}%
+      \gdef\csu@font@style@libertinus@bfit{BoldItalic}%
     }{%
-      \gdef\sjtu@font@family@libertinus@serif{libertinusserif}%
-      \gdef\sjtu@font@family@libertinus@sans{libertinussans}%
-      \gdef\sjtu@font@name@libertinus@math{libertinusmath-regular}%
-      \gdef\sjtu@font@style@libertinus@rm{regular}%
-      \gdef\sjtu@font@style@libertinus@bf{bold}%
-      \gdef\sjtu@font@style@libertinus@it{italic}%
-      \gdef\sjtu@font@style@libertinus@bfit{bolditalic}%
+      \gdef\csu@font@family@libertinus@serif{libertinusserif}%
+      \gdef\csu@font@family@libertinus@sans{libertinussans}%
+      \gdef\csu@font@name@libertinus@math{libertinusmath-regular}%
+      \gdef\csu@font@style@libertinus@rm{regular}%
+      \gdef\csu@font@style@libertinus@bf{bold}%
+      \gdef\csu@font@style@libertinus@it{italic}%
+      \gdef\csu@font@style@libertinus@bfit{bolditalic}%
     }%
   \fi
 }
-\newcommand\sjtu@set@font@xits{%
-  \sjtu@font@set@xits@names
-  \setmainfont{\sjtu@font@family@xits}[
+\newcommand\csu@set@font@xits{%
+  \csu@font@set@xits@names
+  \setmainfont{\csu@font@family@xits}[
     Extension      = .otf,
-    UprightFont    = *-\sjtu@font@style@xits@rm,
-    BoldFont       = *-\sjtu@font@style@xits@bf,
-    ItalicFont     = *-\sjtu@font@style@xits@it,
-    BoldItalicFont = *-\sjtu@font@style@xits@bfit,
+    UprightFont    = *-\csu@font@style@xits@rm,
+    BoldFont       = *-\csu@font@style@xits@bf,
+    ItalicFont     = *-\csu@font@style@xits@it,
+    BoldItalicFont = *-\csu@font@style@xits@bfit,
   ]
 }
-\newcommand\sjtu@set@font@times{%
+\newcommand\csu@set@font@times{%
   \setmainfont{Times New Roman}[Ligatures = Rare]
   \setsansfont{Arial}
   \setmonofont{Courier New}[Scale = MatchLowercase]
 }
-\newcommand\sjtu@set@font@stix{%
+\newcommand\csu@set@font@stix{%
   \setmainfont{STIX2Text}[
     Extension      = .otf,
     UprightFont    = *-Regular,
@@ -575,7 +575,7 @@
     BoldItalicFont = *-BoldItalic,
   ]
 }
-\newcommand\sjtu@set@font@step{%
+\newcommand\csu@set@font@step{%
   \setmainfont{STEP}[
     Extension      = .otf,
     UprightFont    = *-Regular,
@@ -584,7 +584,7 @@
     BoldItalicFont = *-BoldItalic,
   ]
 }
-\newcommand\sjtu@set@font@source@sans@mono{%
+\newcommand\csu@set@font@source@sans@mono{%
   \setsansfont{SourceSansPro}[
     Extension      = .otf,
     UprightFont    = *-Regular ,
@@ -601,7 +601,7 @@
     Scale          = MatchLowercase,
   ]
 }
-\newcommand\sjtu@set@font@termes{%
+\newcommand\csu@set@font@termes{%
   \setmainfont{texgyretermes}[
     Extension      = .otf,
     UprightFont    = *-regular,
@@ -610,7 +610,7 @@
     BoldItalicFont = *-bolditalic,
   ]%
 }
-\newcommand\sjtu@set@font@pagella{%
+\newcommand\csu@set@font@pagella{%
   \setmainfont{texgyrepagella}[
     Extension      = .otf,
     UprightFont    = *-regular,
@@ -619,7 +619,7 @@
     BoldItalicFont = *-bolditalic,
   ]%
 }
-\newcommand\sjtu@set@font@texgyre@sans@mono{%
+\newcommand\csu@set@font@texgyre@sans@mono{%
   \setsansfont{texgyreheros}[
     Extension      = .otf,
     UprightFont    = *-regular,
@@ -635,25 +635,25 @@
     BoldItalicFont = *-bolditalic,
   ]%
 }
-\newcommand\sjtu@set@font@cambria{%
+\newcommand\csu@set@font@cambria{%
   \setmainfont{Cambria}
   \setsansfont{Calibri}
   \setmonofont{Consolas}[Scale = MatchLowercase]
 }
-\newcommand\sjtu@set@font@libertinus{%
-  \sjtu@font@set@libertinus@names
-  \setmainfont{\sjtu@font@family@libertinus@serif}[
+\newcommand\csu@set@font@libertinus{%
+  \csu@font@set@libertinus@names
+  \setmainfont{\csu@font@family@libertinus@serif}[
     Extension      = .otf,
-    UprightFont    = *-\sjtu@font@style@libertinus@rm,
-    BoldFont       = *-\sjtu@font@style@libertinus@bf,
-    ItalicFont     = *-\sjtu@font@style@libertinus@it,
-    BoldItalicFont = *-\sjtu@font@style@libertinus@bfit,
+    UprightFont    = *-\csu@font@style@libertinus@rm,
+    BoldFont       = *-\csu@font@style@libertinus@bf,
+    ItalicFont     = *-\csu@font@style@libertinus@it,
+    BoldItalicFont = *-\csu@font@style@libertinus@bfit,
   ]%
-  \setsansfont{\sjtu@font@family@libertinus@sans}[
+  \setsansfont{\csu@font@family@libertinus@sans}[
     Extension      = .otf,
-    UprightFont    = *-\sjtu@font@style@libertinus@rm,
-    BoldFont       = *-\sjtu@font@style@libertinus@bf,
-    ItalicFont     = *-\sjtu@font@style@libertinus@it,
+    UprightFont    = *-\csu@font@style@libertinus@rm,
+    BoldFont       = *-\csu@font@style@libertinus@bf,
+    ItalicFont     = *-\csu@font@style@libertinus@it,
   ]%
   \setmonofont{lmmonolt10}[
     Extension      = .otf,
@@ -663,7 +663,7 @@
     BoldItalicFont = *-boldoblique,
   ]%
 }
-\newcommand\sjtu@set@font@lm{%
+\newcommand\csu@set@font@lm{%
   \setmainfont{lmroman10}[
     Extension      = .otf,
     UprightFont    = *-regular,
@@ -692,21 +692,21 @@
   nabla      = upright,
   partial    = upright,
 }
-\newcommand\sjtu@set@math@font@xits{%
-  \sjtu@font@set@xits@names
-  \setmathfont{\sjtu@font@name@xits@math@rm}[
+\newcommand\csu@set@math@font@xits{%
+  \csu@font@set@xits@names
+  \setmathfont{\csu@font@name@xits@math@rm}[
     Extension    = .otf,
-    BoldFont     = \sjtu@font@name@xits@math@bf,
+    BoldFont     = \csu@font@name@xits@math@bf,
     StylisticSet = 8,
   ]%
-  \setmathfont{\sjtu@font@name@xits@math@rm}[
+  \setmathfont{\csu@font@name@xits@math@rm}[
     Extension    = .otf,
-    BoldFont     = \sjtu@font@name@xits@math@bf,
+    BoldFont     = \csu@font@name@xits@math@bf,
     StylisticSet = 1,
     range        = {cal,bfcal},
   ]%
 }
-\newcommand\sjtu@set@math@font@stix{%
+\newcommand\csu@set@math@font@stix{%
   \setmathfont{STIX2Math}[
     Extension    = .otf,
     StylisticSet = 8,
@@ -717,7 +717,7 @@
     range        = {cal,bfcal},
   ]%
 }
-\newcommand\sjtu@set@math@font@step{%
+\newcommand\csu@set@math@font@step{%
   \setmathfont{STEPMath-Regular}[
     Extension    = .otf,
     BoldFont     = STEPMath-Bold,
@@ -730,81 +730,81 @@
     range        = {cal,bfcal},
   ]%
 }
-\newcommand\sjtu@set@math@font@termes{%
+\newcommand\csu@set@math@font@termes{%
   \setmathfont{texgyretermes-math.otf}
 }
-\newcommand\sjtu@set@math@font@pagella{%
+\newcommand\csu@set@math@font@pagella{%
   \setmathfont{texgyrepagella-math.otf}
 }
-\newcommand\sjtu@set@math@font@cambria{%
+\newcommand\csu@set@math@font@cambria{%
   \setmathfont{Cambria Math}
 }
-\newcommand\sjtu@set@math@font@libertinus{%
-  \sjtu@font@set@libertinus@names
-  \setmathfont{\sjtu@font@name@libertinus@math .otf}%
+\newcommand\csu@set@math@font@libertinus{%
+  \csu@font@set@libertinus@names
+  \setmathfont{\csu@font@name@libertinus@math .otf}%
 }
-\newcommand\sjtu@set@math@font@lm{%
+\newcommand\csu@set@math@font@lm{%
   \setmathfont{latinmodern-math.otf}%
 }
-\newcommand\sjtu@load@fontset@xits{%
-  \sjtu@set@font@xits
-  \sjtu@set@font@source@sans@mono
-  \sjtu@set@math@font@xits
+\newcommand\csu@load@fontset@xits{%
+  \csu@set@font@xits
+  \csu@set@font@source@sans@mono
+  \csu@set@math@font@xits
 }
-\newcommand\sjtu@load@fontset@times{%
-  \sjtu@set@font@times
-  \sjtu@set@math@font@xits
+\newcommand\csu@load@fontset@times{%
+  \csu@set@font@times
+  \csu@set@math@font@xits
 }
-\newcommand\sjtu@load@fontset@stix{%
-  \sjtu@set@font@stix
-  \sjtu@set@font@source@sans@mono
-  \sjtu@set@math@font@stix
+\newcommand\csu@load@fontset@stix{%
+  \csu@set@font@stix
+  \csu@set@font@source@sans@mono
+  \csu@set@math@font@stix
 }
-\newcommand\sjtu@load@fontset@step{%
-  \sjtu@set@font@step
-  \sjtu@set@font@source@sans@mono
-  \sjtu@set@math@font@step
+\newcommand\csu@load@fontset@step{%
+  \csu@set@font@step
+  \csu@set@font@source@sans@mono
+  \csu@set@math@font@step
 }
-\newcommand\sjtu@load@fontset@termes{%
-  \sjtu@set@font@termes
-  \sjtu@set@font@texgyre@sans@mono
-  \sjtu@set@math@font@termes
+\newcommand\csu@load@fontset@termes{%
+  \csu@set@font@termes
+  \csu@set@font@texgyre@sans@mono
+  \csu@set@math@font@termes
 }
-\newcommand\sjtu@load@fontset@pagella{%
-  \sjtu@set@font@pagella
-  \sjtu@set@font@texgyre@sans@mono
-  \sjtu@set@math@font@pagella
+\newcommand\csu@load@fontset@pagella{%
+  \csu@set@font@pagella
+  \csu@set@font@texgyre@sans@mono
+  \csu@set@math@font@pagella
 }
-\newcommand\sjtu@load@fontset@cambria{%
-  \sjtu@set@font@cambria
-  \sjtu@set@math@font@cambria
+\newcommand\csu@load@fontset@cambria{%
+  \csu@set@font@cambria
+  \csu@set@math@font@cambria
 }
-\newcommand\sjtu@load@fontset@libertinus{%
-  \sjtu@set@font@libertinus
-  \sjtu@set@math@font@libertinus
+\newcommand\csu@load@fontset@libertinus{%
+  \csu@set@font@libertinus
+  \csu@set@math@font@libertinus
 }
-\newcommand\sjtu@load@fontset@lm{%
-  \sjtu@set@font@lm
-  \sjtu@set@math@font@lm
+\newcommand\csu@load@fontset@lm{%
+  \csu@set@font@lm
+  \csu@set@math@font@lm
 }
-\newcommand\sjtu@load@fontset@none{\relax}
-\newcommand\sjtu@load@fontset{%
-  \@nameuse{sjtu@load@fontset@\sjtu@latinfontset}
+\newcommand\csu@load@fontset@none{\relax}
+\newcommand\csu@load@fontset{%
+  \@nameuse{csu@load@fontset@\csu@latinfontset}
 }
-\sjtu@load@fontset
-\sjtu@option@hook{sjtu}{latinfontset}{%
-  \sjtu@load@fontset
+\csu@load@fontset
+\csu@option@hook{csu}{latinfontset}{%
+  \csu@load@fontset
 }
-\def\sjtu@thepage{}
-\def\sjtu@lastpageref{}
-\newif\ifsjtu@page@numbering \sjtu@page@numberingtrue
+\def\csu@thepage{}
+\def\csu@lastpageref{}
+\newif\ifcsu@page@numbering \csu@page@numberingtrue
 \AtEndOfClass{%
   \sloppy
   \raggedbottom
 }
-\sjtu@patchcmd\cleardoublepage%
+\csu@patchcmd\cleardoublepage%
   {\newpage}{\thispagestyle{empty}\newpage}
-\sjtu@patchcmd\chapter%
+\csu@patchcmd\chapter%
   {\thispagestyle}{\@gobble}
 \AtBeginDocument{%
   \pagenumbering{Alph}
@@ -813,21 +813,21 @@
 \renewcommand\frontmatter{%
   \cleardoublepage
   \@mainmatterfalse
-  \ifsjtu@style@frontmatter@numbering@false
-    \sjtu@page@numberingfalse
+  \ifcsu@style@frontmatter@numbering@false
+    \csu@page@numberingfalse
   \fi
   \pagenumbering{Roman}
-  \def\sjtu@thepage{\thepage}
-  \def\sjtu@lastpageref{\lastpageref{pagesLTS.Roman}}
+  \def\csu@thepage{\thepage}
+  \def\csu@lastpageref{\lastpageref{pagesLTS.Roman}}
   \pagestyle{plain}
 }
 \renewcommand\mainmatter{%
   \cleardoublepage
   \@mainmattertrue
-  \sjtu@page@numberingtrue
-  \sjtu@set@float@fontsizetrue
+  \csu@page@numberingtrue
+  \csu@set@float@fontsizetrue
   \pagenumbering{arabic}
-  \def\sjtu@lastpageref{\lastpageref{pagesLTS.arabic}}
+  \def\csu@lastpageref{\lastpageref{pagesLTS.arabic}}
 }
 \renewcommand\backmatter{%
   \cleardoublepage
@@ -840,8 +840,8 @@
     titleformat  = {},
     aftername    = \quad,
     afterindent  = true,
-    beforeskip   = {\ifsjtu@type@graduate 0pt\else 1ex\fi},
-    afterskip    = {\ifsjtu@type@graduate 3ex\else 4ex\fi},
+    beforeskip   = {\ifcsu@type@graduate 0pt\else 1ex\fi},
+    afterskip    = {\ifcsu@type@graduate 3ex\else 4ex\fi},
   },
   section = {%
     format       = \zihao{4}\bfseries\heiti,
@@ -861,41 +861,41 @@
   paragraph/afterindent    = true,
   subparagraph/afterindent = true,
 }
-\newlength{\sjtu@headings@indent@fixed}
-\setlength{\sjtu@headings@indent@fixed}{2\ccwd}
-\newcommand\sjtu@style@set@indent@headings{%
-  \ifsjtu@style@indent@headings@fixed
-    \sjtu@style@indent@headings@autotrue
-    \gdef\sjtu@headings@indent{\sjtu@headings@indent@fixed}
+\newlength{\csu@headings@indent@fixed}
+\setlength{\csu@headings@indent@fixed}{2\ccwd}
+\newcommand\csu@style@set@indent@headings{%
+  \ifcsu@style@indent@headings@fixed
+    \csu@style@indent@headings@autotrue
+    \gdef\csu@headings@indent{\csu@headings@indent@fixed}
   \else
-    \gdef\sjtu@headings@indent{2\ccwd}
+    \gdef\csu@headings@indent{2\ccwd}
   \fi
-  \ifsjtu@style@indent@headings@auto
-    \ifsjtu@type@graduate\relax\else
+  \ifcsu@style@indent@headings@auto
+    \ifcsu@type@graduate\relax\else
       \ctexset{%
         subsubsection/name   = {(,)},
         subsubsection/number = \arabic{subsubsection},
       }
     \fi
   \else
-    \gdef\sjtu@headings@indent{\z@}
+    \gdef\csu@headings@indent{\z@}
     \ctexset{%
       subsubsection/name   = {},
       subsubsection/number = \thesubsubsection,
     }
   \fi
   \ctexset{%
-    section/indent       = \sjtu@headings@indent,
-    subsection/indent    = \sjtu@headings@indent,
-    subsubsection/indent = \sjtu@headings@indent,
+    section/indent       = \csu@headings@indent,
+    subsection/indent    = \csu@headings@indent,
+    subsubsection/indent = \csu@headings@indent,
   }
 }
-\sjtu@style@set@indent@headings
-\sjtu@option@hook{sjtu@style}{indent-headings}{%
-  \sjtu@style@set@indent@headings
+\csu@style@set@indent@headings
+\csu@option@hook{csu@style}{indent-headings}{%
+  \csu@style@set@indent@headings
 }
-\newcommand\sjtu@indent@box{%
-  \hspace*{\ifsjtu@style@indent@headings@auto 2\ccwd\else\z@\fi}%
+\newcommand\csu@indent@box{%
+  \hspace*{\ifcsu@style@indent@headings@auto 2\ccwd\else\z@\fi}%
 }
 \ctexset{%
   punct          = quanjiao,
@@ -905,22 +905,22 @@
 \setlist{nosep}
 \setlist*{leftmargin=*}
 \setlist[1]{labelindent=\parindent}
-\def\sjtu@textcircled#1{%
+\def\csu@textcircled#1{%
   \ifnum\value{#1} >10%
-    \sjtu@error{%
+    \csu@error{%
       Too many footnotes in this page.
       Keep footnote no more than 10%
     }%
   \fi
   {\CJKfamily+{}\symbol{\the\numexpr\value{#1}+"245F\relax}}%
 }
-\renewcommand{\thefootnote}{\sjtu@textcircled{footnote}}
-\renewcommand{\thempfootnote}{\sjtu@textcircled{mpfootnote}}
+\renewcommand{\thefootnote}{\csu@textcircled{footnote}}
+\renewcommand{\thempfootnote}{\csu@textcircled{mpfootnote}}
 \footnotemargin1.5em\relax
-\let\sjtu@makefnmark\@makefnmark
-\def\sjtu@@makefnmark{\hbox{{\normalfont\@thefnmark}}}
-\pretocmd{\@makefntext}{\let\@makefnmark\sjtu@@makefnmark}{}{}
-\apptocmd{\@makefntext}{\let\@makefnmark\sjtu@makefnmark}{}{}
+\let\csu@makefnmark\@makefnmark
+\def\csu@@makefnmark{\hbox{{\normalfont\@thefnmark}}}
+\pretocmd{\@makefntext}{\let\@makefnmark\csu@@makefnmark}{}{}
+\apptocmd{\@makefntext}{\let\@makefnmark\csu@makefnmark}{}{}
 \urlstyle{same}
 \g@addto@macro\UrlBreaks{%
   \do0\do1\do2\do3\do4\do5\do6\do7\do8\do9%
@@ -930,16 +930,16 @@
   \do\n\do\o\do\p\do\q\do\r\do\s\do\t\do\u\do\v\do\w\do\x\do\y\do\z
 }
 \Urlmuskip=0mu plus 0.1mu
-\newcommand\sjtu@pdfbookmark[2]{}
-\newcommand\sjtu@phantomsection{}
-\NewDocumentCommand{\sjtu@chapter}{s O{#3} m O{#2}}{
+\newcommand\csu@pdfbookmark[2]{}
+\newcommand\csu@phantomsection{}
+\NewDocumentCommand{\csu@chapter}{s O{#3} m O{#2}}{
   \if@openright\cleardoublepage\else\clearpage\fi%
   \IfBooleanTF{#1}{%
     \ifthenelse{\equal{#4}{}}{\relax}{%
-      \sjtu@pdfbookmark{0}{#4}%
+      \csu@pdfbookmark{0}{#4}%
     }
   }{%
-    \sjtu@phantomsection
+    \csu@phantomsection
     \addcontentsline{toc}{chapter}{#4}%
   }%%
   \chapter*{#3}%
@@ -948,91 +948,91 @@
 \setcounter{secnumdepth}{3}
 \setcounter{tocdepth}{2}
 \renewcommand\tableofcontents{%
-  \sjtu@chapter*{\contentsname}%
+  \csu@chapter*{\contentsname}%
   \@starttoc{toc}%
 }
-\def\sjtu@listof#1{% #1: float type
+\def\csu@listof#1{% #1: float type
   \setcounter{tocdepth}{2} % restore tocdepth in case being modified
   \@ifstar
-    {\sjtu@chapter*{\csname list#1name\endcsname}\@starttoc{\csname ext@#1\endcsname}}%
-    {\sjtu@chapter{\csname list#1name\endcsname}\@starttoc{\csname ext@#1\endcsname}}%
+    {\csu@chapter*{\csname list#1name\endcsname}\@starttoc{\csname ext@#1\endcsname}}%
+    {\csu@chapter{\csname list#1name\endcsname}\@starttoc{\csname ext@#1\endcsname}}%
 }
-\renewcommand\listoffigures{\sjtu@listof{figure}}
-\renewcommand\listoftables{\sjtu@listof{table}}
-\ifsjtu@language@chinese
+\renewcommand\listoffigures{\csu@listof{figure}}
+\renewcommand\listoftables{\csu@listof{table}}
+\ifcsu@language@chinese
   \renewcommand\cftdot{\textperiodcentered}
 \fi
 \renewcommand\cftdotsep{1}
-\renewcommand\cftfigpresnum{\sjtu@name@figure~}
-\renewcommand\cfttabpresnum{\sjtu@name@table~}
+\renewcommand\cftfigpresnum{\csu@name@figure~}
+\renewcommand\cfttabpresnum{\csu@name@table~}
 \AtEndPreamble{%
-  \newlength{\sjtu@cftfignumwidth@tmp}
-    \settowidth{\sjtu@cftfignumwidth@tmp}{\cftfigpresnum}
-  \addtolength{\cftfignumwidth}{\sjtu@cftfignumwidth@tmp}
-  \newlength{\sjtu@cfttabnumwidth@tmp}
-    \settowidth{\sjtu@cfttabnumwidth@tmp}{\cfttabpresnum}
-  \addtolength{\cfttabnumwidth}{\sjtu@cfttabnumwidth@tmp}
+  \newlength{\csu@cftfignumwidth@tmp}
+    \settowidth{\csu@cftfignumwidth@tmp}{\cftfigpresnum}
+  \addtolength{\cftfignumwidth}{\csu@cftfignumwidth@tmp}
+  \newlength{\csu@cfttabnumwidth@tmp}
+    \settowidth{\csu@cfttabnumwidth@tmp}{\cfttabpresnum}
+  \addtolength{\cfttabnumwidth}{\csu@cfttabnumwidth@tmp}
 }
 \renewcommand\textfraction{0.15}
 \renewcommand\topfraction{0.85}
 \renewcommand\bottomfraction{0.65}
 \renewcommand\floatpagefraction{0.60}
-\newcommand\sjtu@def@thefloats{
-  \def\thefigure{\thechapter\sjtu@style@fl@num@sep\arabic{figure}}
+\newcommand\csu@def@thefloats{
+  \def\thefigure{\thechapter\csu@style@fl@num@sep\arabic{figure}}
   \def\p@subfigure{\thefigure}
-  \def\thetable{\thechapter\sjtu@style@fl@num@sep\arabic{table}}
+  \def\thetable{\thechapter\csu@style@fl@num@sep\arabic{table}}
 }
-\newcommand\sjtu@counter@without@chapter{
+\newcommand\csu@counter@without@chapter{
   \counterwithout{figure}{chapter}
   \setcounter{figure}{0}
   \counterwithout{table}{chapter}
   \setcounter{table}{0}
 }
-\newcommand\sjtu@counter@within@chapter{
+\newcommand\csu@counter@within@chapter{
   \counterwithin*{figure}{chapter}
   \counterwithin*{table}{chapter}
-  \sjtu@def@thefloats
+  \csu@def@thefloats
 }
-\ifsjtu@continuous
+\ifcsu@continuous
   \apptocmd{\mainmatter}{%
-    \sjtu@counter@without@chapter
+    \csu@counter@without@chapter
   }{}{}
   \apptocmd{\appendix}{%
-    \sjtu@counter@within@chapter
+    \csu@counter@within@chapter
   }{}{}
 \else
   \AtBeginDocument{%
-    \sjtu@def@thefloats
+    \csu@def@thefloats
   }
 \fi
 \AtBeginDocument{%
-  \def\theequation{\thechapter\sjtu@style@eq@num@sep\arabic{equation}}
+  \def\theequation{\thechapter\csu@style@eq@num@sep\arabic{equation}}
 }
-\newif\ifsjtu@set@float@fontsize \sjtu@set@float@fontsizefalse
-\sjtu@patchcmd\@floatboxreset%
+\newif\ifcsu@set@float@fontsize \csu@set@float@fontsizefalse
+\csu@patchcmd\@floatboxreset%
   {\normalsize}
-  {\ifsjtu@set@float@fontsize\zihao{5}\else\normalsize\fi}
-\NewDocumentCommand{\SJTUsetfloatfontsize}{}{\sjtu@set@float@fontsizetrue}
-\NewDocumentCommand{\SJTUunsetfloatfontsize}{}{\sjtu@set@float@fontsizefalse}
-\DeclareCaptionFont{sjtu@caption@font}{\zihao{5}\kaishu}
-\DeclareCaptionFont{sjtu@subcaption@font}{\zihao{5}\normalfont}
+  {\ifcsu@set@float@fontsize\zihao{5}\else\normalsize\fi}
+\NewDocumentCommand{\CSUsetfloatfontsize}{}{\csu@set@float@fontsizetrue}
+\NewDocumentCommand{\CSUunsetfloatfontsize}{}{\csu@set@float@fontsizefalse}
+\DeclareCaptionFont{csu@caption@font}{\zihao{5}\kaishu}
+\DeclareCaptionFont{csu@subcaption@font}{\zihao{5}\normalfont}
 \DeclareCaptionLabelSeparator{enskip}{\enskip}
 \captionsetup{%
   format        = plain,
   labelformat   = simple,
   labelsep      = enskip,
   justification = centering,
-  font          = sjtu@caption@font
+  font          = csu@caption@font
 }
 \captionsetup[sub]{%
   format        = hang,
   labelformat   = brace,
   justification = justified,
-  font          = sjtu@subcaption@font
+  font          = csu@subcaption@font
 }
 \DeclareCaptionOption{bi-second}[]{%
-  \def\tablename{\sjtu@name@table@second}
-  \def\figurename{\sjtu@name@figure@second}
+  \def\tablename{\csu@name@table@second}
+  \def\figurename{\csu@name@figure@second}
 }
 \captionsetup[bi-second]{bi-second}
 \let\mathellipsis\cdots
@@ -1047,109 +1047,109 @@
 \newcommand\bm{\symbf}
 \renewcommand\boldsymbol{\symbf}
 \newcommand\square{\mdlgwhtsquare}
-\newcommand\sjtu@square{{\CJKfamily+{}\symbol{"25A1}}}
-\newcommand\sjtu@copr@addon{%
+\newcommand\csu@square{{\CJKfamily+{}\symbol{"25A1}}}
+\newcommand\csu@copr@addon{%
   \vskip 2ex
   \begingroup
     \linespread{1}\selectfont
-    本\sjtu@name@thesis@type 属于\parbox[c]{20\ccwd}{%
-      {\heiti 保\hspace{1\ccwd}密}~\sjtu@square ，
+    本\csu@name@thesis@type 属于\parbox[c]{20\ccwd}{%
+      {\heiti 保\hspace{1\ccwd}密}~\csu@square ，
       在\uline{\hspace{2\ccwd}}年解密后适用本授权书。\bigbreak
-      {\heiti 不保密}~\sjtu@square 。
+      {\heiti 不保密}~\csu@square 。
     }\par
   \endgroup
   \vskip 2ex
   （请在以上方框内打“$\checkmark$”）
 }
-\newcommand\sjtu@signbox[1]{%
+\newcommand\csu@signbox[1]{%
   \parbox{.45\textwidth}{%
     #1 签名：\vskip 4em
     日期：\hspace{\stretch{3}}年\hspace{\stretch{2}}月\hspace{\stretch{2}}日
   }
 }
 \NewDocumentCommand{\originalitypage}{s O{}}{%
-  \ifsjtu@review\relax\else
+  \ifcsu@review\relax\else
     \cleardoublepage
     \ifblank{#2}{%
       \thispagestyle{empty}
-      \sjtu@chapter*[\sjtu@name@orig@subtitle]{%
-        \zihao{-2}\sjtu@name@school@zh\\\sjtu@name@orig@title
+      \csu@chapter*[\csu@name@orig@subtitle]{%
+        \zihao{-2}\csu@name@school@zh\\\csu@name@orig@title
       }
       \IfBooleanT{#1}{%
-        \let\sjtu@name@title@qouted\@empty
+        \let\csu@name@title@qouted\@empty
       }
       \begingroup
         \zihao{4}
         \begingroup
           \linespread{1.5}\selectfont
-          \sjtu@name@origbody\par
+          \csu@name@origbody\par
         \endgroup
         \vskip 16ex
         \noindent
         \begin{minipage}{\textwidth}
           \hfill
-          \sjtu@signbox{\sjtu@name@thesis@type 作者}
+          \csu@signbox{\csu@name@thesis@type 作者}
         \end{minipage}
         \par
       \endgroup
     }{%
       \includepdf[pagecommand={%
-        \sjtu@pdfbookmark{0}{\sjtu@name@orig@subtitle}%
+        \csu@pdfbookmark{0}{\csu@name@orig@subtitle}%
       }]{#2}
     }
   \fi
 }
 \NewDocumentCommand{\copyrightpage}{O{}}{%
-  \ifsjtu@review\relax\else
+  \ifcsu@review\relax\else
     \cleardoublepage
     \ifblank{#1}{%
       \thispagestyle{empty}
-      \sjtu@chapter*[\sjtu@name@copr@subtitle]{%
-        \zihao{-2}\sjtu@name@school@zh\\\sjtu@name@copr@title
+      \csu@chapter*[\csu@name@copr@subtitle]{%
+        \zihao{-2}\csu@name@school@zh\\\csu@name@copr@title
       }
       \begingroup
         \zihao{4}
         \begingroup
           \linespread{1.5}\selectfont
-          \sjtu@name@coprbody\par
-          \sjtu@copr@addon\par
+          \csu@name@coprbody\par
+          \csu@copr@addon\par
         \endgroup
         \vskip 16ex
         \noindent
         \begin{minipage}{\textwidth}
-          \sjtu@signbox{\sjtu@name@thesis@type 作者}
+          \csu@signbox{\csu@name@thesis@type 作者}
           \hfill
-          \sjtu@signbox{指导教师}
+          \csu@signbox{指导教师}
         \end{minipage}
         \par
       \endgroup
     }{%
       \includepdf[pagecommand={%
-        \sjtu@pdfbookmark{0}{\sjtu@name@copr@subtitle}%
+        \csu@pdfbookmark{0}{\csu@name@copr@subtitle}%
       }]{#1}
     }
   \fi
 }
-\newcommand\sjtu@save@env@body[1]{\long\gdef\sjtu@saved@env@body{#1}}
+\newcommand\csu@save@env@body[1]{\long\gdef\csu@saved@env@body{#1}}
 \NewDocumentEnvironment{nomenclature}{}{%
-  \sjtu@chapter{\sjtu@name@nomenclature}
+  \csu@chapter{\csu@name@nomenclature}
 }{}
 \NewDocumentEnvironment{nomenclature*}{}{%
-  \sjtu@chapter*{\sjtu@name@nomenclature}
+  \csu@chapter*{\csu@name@nomenclature}
 }{}
 \NewDocumentEnvironment{summary}{}{%
-  \sjtu@chapter{\sjtu@name@summary}
+  \csu@chapter{\csu@name@summary}
 }{}
 \NewDocumentEnvironment{acknowledgements}{}{%
-  \Collect@Body\sjtu@save@env@body
+  \Collect@Body\csu@save@env@body
 }{%
-  \ifsjtu@review\relax\else
-    \sjtu@chapter{\sjtu@name@acknowledgements}
-    \sjtu@saved@env@body
+  \ifcsu@review\relax\else
+    \csu@chapter{\csu@name@acknowledgements}
+    \csu@saved@env@body
   \fi
 }
-\newenvironment{sjtu@bibliolist}[2]{%
-  \sjtu@chapter{#2}
+\newenvironment{csu@bibliolist}[2]{%
+  \csu@chapter{#2}
   \list{\@biblabel{\@arabic\c@enumiv}}%
        {\settowidth\labelwidth{\@biblabel{#1}}%
         \leftmargin\labelwidth
@@ -1169,71 +1169,71 @@
   \endlist
 }
 \NewDocumentEnvironment{publications}{O{99}}{%
-  \Collect@Body\sjtu@save@env@body
+  \Collect@Body\csu@save@env@body
 }{%
-  \ifsjtu@review\relax\else
-    \begin{sjtu@bibliolist}{#1}{\sjtu@name@publications}
-      \sjtu@saved@env@body
-    \end{sjtu@bibliolist}
+  \ifcsu@review\relax\else
+    \begin{csu@bibliolist}{#1}{\csu@name@publications}
+      \csu@saved@env@body
+    \end{csu@bibliolist}
   \fi
 }
 \NewDocumentEnvironment{publications*}{O{99}}{%
-  \Collect@Body\sjtu@save@env@body
+  \Collect@Body\csu@save@env@body
 }{%
-  \ifsjtu@review
-    \begin{sjtu@bibliolist}{#1}{\sjtu@name@publications}
-      \sjtu@saved@env@body
-    \end{sjtu@bibliolist}
+  \ifcsu@review
+    \begin{csu@bibliolist}{#1}{\csu@name@publications}
+      \csu@saved@env@body
+    \end{csu@bibliolist}
   \fi
 }
 \NewDocumentEnvironment{achievements}{O{99}}{%
-  \Collect@Body\sjtu@save@env@body
+  \Collect@Body\csu@save@env@body
 }{%
-  \ifsjtu@review\relax\else
-    \begin{sjtu@bibliolist}{#1}{\sjtu@name@achievements}
-      \sjtu@saved@env@body
-    \end{sjtu@bibliolist}
+  \ifcsu@review\relax\else
+    \begin{csu@bibliolist}{#1}{\csu@name@achievements}
+      \csu@saved@env@body
+    \end{csu@bibliolist}
   \fi
 }
 \NewDocumentEnvironment{achievements*}{O{99}}{%
-  \Collect@Body\sjtu@save@env@body
+  \Collect@Body\csu@save@env@body
 }{%
-  \ifsjtu@review
-    \begin{sjtu@bibliolist}{#1}{\sjtu@name@achievements}
-      \sjtu@saved@env@body
-    \end{sjtu@bibliolist}
+  \ifcsu@review
+    \begin{csu@bibliolist}{#1}{\csu@name@achievements}
+      \csu@saved@env@body
+    \end{csu@bibliolist}
   \fi
 }
 \NewDocumentEnvironment{resume}{}{%
-  \Collect@Body\sjtu@save@env@body
+  \Collect@Body\csu@save@env@body
 }{%
-  \ifsjtu@review\relax\else
-    \sjtu@chapter{\sjtu@name@resume}
-    \sjtu@saved@env@body
+  \ifcsu@review\relax\else
+    \csu@chapter{\csu@name@resume}
+    \csu@saved@env@body
   \fi
 }
 \NewDocumentEnvironment{digest}{}{%
-  \Collect@Body\sjtu@save@env@body
+  \Collect@Body\csu@save@env@body
 }{%
-  \ifsjtu@type@bachelor
-    \ifsjtu@language@chinese
+  \ifcsu@type@bachelor
+    \ifcsu@language@chinese
       \AtEndDocument{%
         \cleardoublepage
         \pagenumbering{roman}
-        \def\sjtu@thepage{\theCurrentPageLocal}
-        \def\sjtu@lastpageref{\lastpageref{pagesLTS.roman.local}}
-        \sjtu@chapter*[\sjtu@name@digest]{\MakeUppercase\sjtu@info@title@en}
+        \def\csu@thepage{\theCurrentPageLocal}
+        \def\csu@lastpageref{\lastpageref{pagesLTS.roman.local}}
+        \csu@chapter*[\csu@name@digest]{\MakeUppercase\csu@info@title@en}
         \counterwithout{section}{chapter}
-        \sjtu@counter@without@chapter
+        \csu@counter@without@chapter
         \let\addcontentsline\@gobblethree
-        \sjtu@saved@env@body
+        \csu@saved@env@body
       }
     \fi
   \fi
 }
 \AtEndPreamble{
-  \ifsjtu@review%
-    \sjtusetup{%
+  \ifcsu@review%
+    \csusetup{%
       info = {
         author          = {},
         author*         = {},
@@ -1247,13 +1247,13 @@
   \fi
 }
 \NewDocumentCommand{\encrypt}{m O{***}}{%
-  \ifsjtu@review
+  \ifcsu@review
     {#2}
   \else
     {#1}
   \fi
 }
-\newcommand\sjtu@uline[1]{%
+\newcommand\csu@uline[1]{%
   \begingroup
     \setbox0=\vbox{\strut #1\strut}%
     \dimen0=0pt
@@ -1281,13 +1281,13 @@
     pdfdisplaydoctitle = true,
     hidelinks,
   }
-  \newcounter{sjtu@bookmark}
-  \renewcommand\sjtu@pdfbookmark[2]{%
+  \newcounter{csu@bookmark}
+  \renewcommand\csu@pdfbookmark[2]{%
     \phantomsection
-    \stepcounter{sjtu@bookmark}%
-    \pdfbookmark[#1]{#2}{sjtuchapter.\thesjtu@bookmark}%
+    \stepcounter{csu@bookmark}%
+    \pdfbookmark[#1]{#2}{csuchapter.\thecsu@bookmark}%
   }
-  \renewcommand\sjtu@phantomsection{%
+  \renewcommand\csu@phantomsection{%
     \phantomsection
   }
   \pdfstringdefDisableCommands{%
@@ -1300,11 +1300,11 @@
   }%
   \AtBeginDocument{%
     \hypersetup{
-      pdftitle    = \sjtu@info@title,
-      pdfsubject  = \sjtu@name@subject,
-      pdfkeywords = \sjtu@info@keywords,
-      pdfauthor   = \sjtu@info@author,
-      pdfcreator  = {LaTeX with SJTUThesis \version}
+      pdftitle    = \csu@info@title,
+      pdfsubject  = \csu@name@subject,
+      pdfkeywords = \csu@info@keywords,
+      pdfauthor   = \csu@info@author,
+      pdfcreator  = {LaTeX with CSUThesis \version}
     }
   }%
 }
@@ -1313,7 +1313,7 @@
 }
 \AtEndOfPackageFile*{longtable}{
   \BeforeBeginEnvironment{longtable}
-    {\begingroup\ifsjtu@set@float@fontsize\zihao{5}\fi}
+    {\begingroup\ifcsu@set@float@fontsize\zihao{5}\fi}
   \AfterEndEnvironment{longtable}
     {\endgroup}
 }
@@ -1323,7 +1323,7 @@
     separate-uncertainty = true,
     inter-unit-product   = \ensuremath{{}\cdot{}},
   }
-  \ifsjtu@language@chinese
+  \ifcsu@language@chinese
     \sisetup{
       list-final-separator = { 和 },
       list-pair-separator  = { 和 },
@@ -1331,84 +1331,84 @@
     }
   \fi
 }
-\newcommand\sjtu@def@theorem@name{%
-  \ifsjtu@language@chinese
-    \sjtu@name@def{assumption}{假设}
-    \sjtu@name@def{axiom}{公理}
-    \sjtu@name@def{conjecture}{猜想}
-    \sjtu@name@def{corollary}{推论}
-    \sjtu@name@def{definition}{定义}
-    \sjtu@name@def{example}{例}
-    \sjtu@name@def{exercise}{练习}
-    \sjtu@name@def{lemma}{引理}
-    \sjtu@name@def{problem}{问题}
-    \sjtu@name@def{proof}{证明}
-    \sjtu@name@def{proposition}{命题}
-    \sjtu@name@def{remark}{注}
-    \sjtu@name@def{solution}{解}
-    \sjtu@name@def{theorem}{定理}
+\newcommand\csu@def@theorem@name{%
+  \ifcsu@language@chinese
+    \csu@name@def{assumption}{假设}
+    \csu@name@def{axiom}{公理}
+    \csu@name@def{conjecture}{猜想}
+    \csu@name@def{corollary}{推论}
+    \csu@name@def{definition}{定义}
+    \csu@name@def{example}{例}
+    \csu@name@def{exercise}{练习}
+    \csu@name@def{lemma}{引理}
+    \csu@name@def{problem}{问题}
+    \csu@name@def{proof}{证明}
+    \csu@name@def{proposition}{命题}
+    \csu@name@def{remark}{注}
+    \csu@name@def{solution}{解}
+    \csu@name@def{theorem}{定理}
   \else
-    \sjtu@name@def{assumption}{Assumption}
-    \sjtu@name@def{axiom}{Axiom}
-    \sjtu@name@def{conjecture}{Conjecture}
-    \sjtu@name@def{corollary}{Corollary}
-    \sjtu@name@def{definition}{Definition}
-    \sjtu@name@def{example}{Example}
-    \sjtu@name@def{exercise}{Exercise}
-    \sjtu@name@def{lemma}{Lemma}
-    \sjtu@name@def{problem}{Problem}
-    \sjtu@name@def{proof}{Proof}
-    \sjtu@name@def{proposition}{Proposition}
-    \sjtu@name@def{remark}{Remark}
-    \sjtu@name@def{solution}{Solution}
-    \sjtu@name@def{theorem}{Theorem}
+    \csu@name@def{assumption}{Assumption}
+    \csu@name@def{axiom}{Axiom}
+    \csu@name@def{conjecture}{Conjecture}
+    \csu@name@def{corollary}{Corollary}
+    \csu@name@def{definition}{Definition}
+    \csu@name@def{example}{Example}
+    \csu@name@def{exercise}{Exercise}
+    \csu@name@def{lemma}{Lemma}
+    \csu@name@def{problem}{Problem}
+    \csu@name@def{proof}{Proof}
+    \csu@name@def{proposition}{Proposition}
+    \csu@name@def{remark}{Remark}
+    \csu@name@def{solution}{Solution}
+    \csu@name@def{theorem}{Theorem}
   \fi
 }
-\newcommand\sjtu@def@theorem{%
-  \newtheorem{assumption} {\sjtu@name@assumption} [chapter]
-  \newtheorem{axiom}      {\sjtu@name@axiom}      [chapter]
-  \newtheorem{conjecture} {\sjtu@name@conjecture} [chapter]
-  \newtheorem{corollary}  {\sjtu@name@corollary}  [chapter]
-  \newtheorem{definition} {\sjtu@name@definition} [chapter]
-  \newtheorem{example}    {\sjtu@name@example}    [chapter]
-  \newtheorem{exercise}   {\sjtu@name@exercise}   [chapter]
-  \newtheorem{lemma}      {\sjtu@name@lemma}      [chapter]
-  \newtheorem{problem}    {\sjtu@name@problem}    [chapter]
-  \newtheorem{proposition}{\sjtu@name@proposition}[chapter]
-  \newtheorem{theorem}    {\sjtu@name@theorem}    [chapter]
-  \newtheorem*{remark}    {\sjtu@name@remark}
-  \newtheorem*{solution}  {\sjtu@name@solution}
+\newcommand\csu@def@theorem{%
+  \newtheorem{assumption} {\csu@name@assumption} [chapter]
+  \newtheorem{axiom}      {\csu@name@axiom}      [chapter]
+  \newtheorem{conjecture} {\csu@name@conjecture} [chapter]
+  \newtheorem{corollary}  {\csu@name@corollary}  [chapter]
+  \newtheorem{definition} {\csu@name@definition} [chapter]
+  \newtheorem{example}    {\csu@name@example}    [chapter]
+  \newtheorem{exercise}   {\csu@name@exercise}   [chapter]
+  \newtheorem{lemma}      {\csu@name@lemma}      [chapter]
+  \newtheorem{problem}    {\csu@name@problem}    [chapter]
+  \newtheorem{proposition}{\csu@name@proposition}[chapter]
+  \newtheorem{theorem}    {\csu@name@theorem}    [chapter]
+  \newtheorem*{remark}    {\csu@name@remark}
+  \newtheorem*{solution}  {\csu@name@solution}
 }
 \PassOptionsToPackage{amsmath,thmmarks,hyperref}{ntheorem}
 \AtEndOfPackageFile*{ntheorem}{
-  \sjtu@def@theorem@name
-  \theoremheaderfont{\sjtu@indent@box\bfseries\heiti}
+  \csu@def@theorem@name
+  \theoremheaderfont{\csu@indent@box\bfseries\heiti}
   \theorembodyfont{\normalfont}
   \theoremseparator{\enskip}
   \theoremsymbol{\ensuremath{\square}}
-  \newtheorem*{proof}{\sjtu@name@proof}
+  \newtheorem*{proof}{\csu@name@proof}
   \theoremstyle{plain}
   \theoremsymbol{}
-  \sjtu@def@theorem
+  \csu@def@theorem
 }
 \AtEndOfPackageFile*{amsthm}{
-  \sjtu@def@theorem@name
-  \let\sjtu@thmhead\thmhead@plain
-  \def\thmhead@plain{\sjtu@indent@box\sjtu@thmhead}
-  \newtheoremstyle{sjtuplain}
+  \csu@def@theorem@name
+  \let\csu@thmhead\thmhead@plain
+  \def\thmhead@plain{\csu@indent@box\csu@thmhead}
+  \newtheoremstyle{csuplain}
     {}{}
     {\normalfont}{}
     {\bfseries\heiti}{}
     {\ccwd}{}
-  \theoremstyle{sjtuplain}
-  \sjtu@def@theorem
-  \renewcommand\proofname\sjtu@name@proof
+  \theoremstyle{csuplain}
+  \csu@def@theorem
+  \renewcommand\proofname\csu@name@proof
   \renewenvironment{proof}[1][\proofname]{\par
     \pushQED{\qed}%
     \normalfont \topsep6\p@\@plus6\p@\relax
     \trivlist
     \item\relax
-      {\sjtu@indent@box\bfseries\heiti #1~}
+      {\csu@indent@box\bfseries\heiti #1~}
       \hspace\labelsep\ignorespaces
   }{%
     \popQED\endtrivlist\@endpefalse
@@ -1416,66 +1416,66 @@
 }
 \PassOptionsToPackage{algochapter}{algorithm2e}
 \AtEndOfPackageFile*{algorithm2e}{
-  \SetAlgorithmName{\sjtu@name@algorithm}%
-                   {\sjtu@name@algorithm}%
-                   {\sjtu@name@listalgorithm}
+  \SetAlgorithmName{\csu@name@algorithm}%
+                   {\csu@name@algorithm}%
+                   {\csu@name@listalgorithm}
   \SetAlgoCaptionSeparator{~}
   \def\listalgocfname{\listalgorithmcfname}
   \newlistof{alg}{loa}{\listalgocfname}
   \let\l@algocf\l@alg
   \setlength{\cftalgindent}{1.5em}
   \setlength{\cftalgnumwidth}{2.3em}
-  \renewcommand\cftalgpresnum{\sjtu@name@algorithm~}
-  \apptocmd{\sjtu@counter@without@chapter}{%
+  \renewcommand\cftalgpresnum{\csu@name@algorithm~}
+  \apptocmd{\csu@counter@without@chapter}{%
     \counterwithout{algocf}{chapter}
     \setcounter{algocf}{0}
   }{}{}
-  \pretocmd{\sjtu@counter@within@chapter}{%
+  \pretocmd{\csu@counter@within@chapter}{%
     \counterwithin*{algocf}{chapter}
   }{}{}
-  \apptocmd{\sjtu@def@thefloats}{%
-    \def\thealgocf{\thechapter\sjtu@style@fl@num@sep\arabic{algocf}}
+  \apptocmd{\csu@def@thefloats}{%
+    \def\thealgocf{\thechapter\csu@style@fl@num@sep\arabic{algocf}}
   }{}{}
-  \sjtu@patchcmd\algocf@latexcaption%
+  \csu@patchcmd\algocf@latexcaption%
     {\addcontentsline}
     {\caption@iflist{\addcontentsline}{\@gobblethree}}
   \AtEndPreamble{%
-    \newlength{\sjtu@cftalgnumwidth@tmp}
-      \settowidth{\sjtu@cftalgnumwidth@tmp}{\cftalgpresnum}
-    \addtolength{\cftalgnumwidth}{\sjtu@cftalgnumwidth@tmp}
+    \newlength{\csu@cftalgnumwidth@tmp}
+      \settowidth{\csu@cftalgnumwidth@tmp}{\cftalgpresnum}
+    \addtolength{\cftalgnumwidth}{\csu@cftalgnumwidth@tmp}
   }
-  \renewcommand\listofalgorithms{\sjtu@listof{algocf}}
+  \renewcommand\listofalgorithms{\csu@listof{algocf}}
 }
 \AtEndOfPackageFile*{algorithm}{
   \RequirePackage{algorithmicx, algpseudocode}
-  \floatname{algorithm}{\sjtu@name@algorithm}
+  \floatname{algorithm}{\csu@name@algorithm}
   \@addtoreset{algorithm}{chapter}
-  \sjtu@patchcmd\@chapter%
+  \csu@patchcmd\@chapter%
     {\if@twocolumn}
     {\addtocontents{loa}{\protect\addvspace{10\p@}}%
      \if@twocolumn}
-  \def\listalgorithmname{\sjtu@name@listalgorithm}
+  \def\listalgorithmname{\csu@name@listalgorithm}
   \newlistof{alg}{loa}{\listalgorithmname}
   \let\l@algorithm\l@alg
   \setlength{\cftalgindent}{1.5em}
   \setlength{\cftalgnumwidth}{2.3em}
-  \renewcommand\cftalgpresnum{\sjtu@name@algorithm~}
-  \apptocmd{\sjtu@counter@without@chapter}{%
+  \renewcommand\cftalgpresnum{\csu@name@algorithm~}
+  \apptocmd{\csu@counter@without@chapter}{%
     \counterwithout{algorithm}{chapter}
     \setcounter{algorithm}{0}
   }{}{}
-  \pretocmd{\sjtu@counter@within@chapter}{%
+  \pretocmd{\csu@counter@within@chapter}{%
     \counterwithin*{algorithm}{chapter}
   }{}{}
-  \apptocmd{\sjtu@def@thefloats}{%
-    \def\thealgorithm{\thechapter\sjtu@style@fl@num@sep\arabic{algorithm}}
+  \apptocmd{\csu@def@thefloats}{%
+    \def\thealgorithm{\thechapter\csu@style@fl@num@sep\arabic{algorithm}}
   }{}{}
   \AtEndPreamble{%
-    \newlength{\sjtu@cftalgnumwidth@tmp}
-      \settowidth{\sjtu@cftalgnumwidth@tmp}{\cftalgpresnum}
-    \addtolength{\cftalgnumwidth}{\sjtu@cftalgnumwidth@tmp}
+    \newlength{\csu@cftalgnumwidth@tmp}
+      \settowidth{\csu@cftalgnumwidth@tmp}{\cftalgpresnum}
+    \addtolength{\cftalgnumwidth}{\csu@cftalgnumwidth@tmp}
   }
-  \renewcommand\listofalgorithms{\sjtu@listof{algorithm}}
+  \renewcommand\listofalgorithms{\csu@listof{algorithm}}
 }
 \AtEndOfPackageFile*{listings}{
   \lstdefinestyle{lstStyleCode}{
@@ -1538,4 +1538,4 @@
 }
 \endinput
 %%
-%% End of file `sjtuthesis.cls'.
+%% End of file `csuthesis.cls'.

@@ -1,13 +1,13 @@
 %%
-%% This is file `sjtuthesis-undergraduate.ltx',
+%% This is file `csuthesis-undergraduate.ltx',
 %% generated with the docstrip utility.
 %%
 %% The original source files were:
 %%
-%% sjtuthesis.dtx  (with options: `undergraduate')
+%% csuthesis.dtx  (with options: `undergraduate')
 %% 
 %% Copyright (C) 2009-2017 by weijianwen <weijianwen@gmail.com>
-%%           (C) 2018-2020 by SJTUG
+%%           (C) 2018-2020 by CSUG
 %% 
 %% This file may be distributed and/or modified under the
 %% conditions of the LaTeX Project Public License, either version 1.3c
@@ -21,7 +21,7 @@
 %% 
 %% The Current Maintainer of this work is Alexara Wu.
 %% 
-\ProvidesFile{sjtuthesis-undergraduate.ltx}
+\ProvidesFile{csuthesis-undergraduate.ltx}
   [2020/07/31 1.0.0rc7 Shanghai Jiao Tong University Thesis Template]
 \geometry{%
   paper      = a4paper,
@@ -31,25 +31,25 @@
   headsep    = 12bp,
 }
 \pagestyle{fancy}
-\ifsjtu@language@chinese
-  \newcommand\sjtu@thepage@format[2]{第~{#1}~页\,共~{#2}~页}
+\ifcsu@language@chinese
+  \newcommand\csu@thepage@format[2]{第~{#1}~页\,共~{#2}~页}
 \else
-  \newcommand\sjtu@thepage@format[2]{--~~Page~~{#1}~~of~~{#2}~~--}
+  \newcommand\csu@thepage@format[2]{--~~Page~~{#1}~~of~~{#2}~~--}
 \fi
 \fancypagestyle{plain}{%
   \fancyhf{}
   \fancyhead[L]{%
     \includegraphics[height=32pt]%
-      {sjtu-vi-logo-\sjtu@style@header@logo@color.pdf}
+      {csu-vi-logo-\csu@style@header@logo@color.pdf}
   }
   \fancyhead[R]{%
     \parbox[b]{0.7\textwidth}{%
-      \raggedleft\zihao{-5}\heiti\MakeUppercase{\sjtu@info@title}
+      \raggedleft\zihao{-5}\heiti\MakeUppercase{\csu@info@title}
     }
   }
   \fancyfoot[C]{%
-    \ifsjtu@page@numbering
-      \zihao{-5}\sjtu@thepage@format{\sjtu@thepage}{\sjtu@lastpageref}%
+    \ifcsu@page@numbering
+      \zihao{-5}\csu@thepage@format{\csu@thepage}{\csu@lastpageref}%
     \fi
   }
   \renewcommand\headrulewidth{0.75pt}
@@ -60,8 +60,8 @@
 \renewcommand\cftchapfont{\normalfont}
 \renewcommand\cftchapleader{\normalfont\cftdotfill{\cftdotsep}}
 \renewcommand\cftchappagefont{\normalfont}
-\ifsjtu@type@bachelor
-  \sjtusetup{
+\ifcsu@type@bachelor
+  \csusetup{
     style = {
       frontmatter-numbering = false,
       indent-headings = fixed,
@@ -69,48 +69,48 @@
   }
 \fi
 \NewDocumentEnvironment{abstract}{}{%
-  \sjtu@chapter*[\sjtu@name@abstract@zh]{%
-    \sjtu@info@title@zh \vskip 2ex
+  \csu@chapter*[\csu@name@abstract@zh]{%
+    \csu@info@title@zh \vskip 2ex
     \begingroup
       \zihao{4}
-      \sjtu@name@abstract@zh
+      \csu@name@abstract@zh
     \endgroup
-  }[\sjtu@name@abstract]%
+  }[\csu@name@abstract]%
 }{%
   \vskip 3ex \noindent
   \begingroup
     \zihao{-4}
-    \heiti\sjtu@name@keywords@zh
+    \heiti\csu@name@keywords@zh
   \endgroup
   \begingroup
     \zihao{5}
-    \sjtu@clist@use{\sjtu@info@keywords@zh}{，}
+    \csu@clist@use{\csu@info@keywords@zh}{，}
   \endgroup
 }
 \NewDocumentEnvironment{abstract*}{}{%
-  \sjtu@chapter*[\sjtu@name@abstract@en]{%
-    \MakeUppercase\sjtu@info@title@en \vskip 2ex
+  \csu@chapter*[\csu@name@abstract@en]{%
+    \MakeUppercase\csu@info@title@en \vskip 2ex
     \begingroup
       \zihao{4}
-      \MakeUppercase\sjtu@name@abstract@en
+      \MakeUppercase\csu@name@abstract@en
     \endgroup
   }[]
 }{%
   \vskip 3ex \noindent
   \begingroup
     \zihao{-4}\bfseries
-    \sjtu@name@keywords@en
+    \csu@name@keywords@en
   \endgroup
   \begingroup
     \zihao{5}
-    \sjtu@clist@use{\sjtu@info@keywords@en}{, }
+    \csu@clist@use{\csu@info@keywords@en}{, }
   \endgroup
 }
 \RenewDocumentCommand{\maketitle}{}{%
-  \sjtu@pdfbookmark{0}{\sjtu@name@titlepage}
-  \sjtu@make@titlepage@zh%
+  \csu@pdfbookmark{0}{\csu@name@titlepage}
+  \csu@make@titlepage@zh%
 }
-\newcommand\sjtu@make@titlepage@zh{%
+\newcommand\csu@make@titlepage@zh{%
   \cleardoublepage
   \thispagestyle{empty}
   \begin{center}
@@ -118,16 +118,16 @@
     \vspace*{48pt}
     \begingroup
       \includegraphics[height=96pt]%
-        {sjtu-vi-name-\sjtu@style@title@logo@color.pdf}
+        {csu-vi-name-\csu@style@title@logo@color.pdf}
       \par
     \endgroup
-    {\fontsize{32}{42}\selectfont\sjtu@name@subject@zh\par}
+    {\fontsize{32}{42}\selectfont\csu@name@subject@zh\par}
     \vskip 6pt
-    {\zihao{-2}\MakeUppercase\sjtu@name@subject@en\par}
+    {\zihao{-2}\MakeUppercase\csu@name@subject@en\par}
     \vskip 16pt
     \begingroup
       \includegraphics[height=86pt]%
-        {sjtu-vi-badge-\sjtu@style@title@logo@color.pdf}
+        {csu-vi-badge-\csu@style@title@logo@color.pdf}
       \par
     \endgroup
     \vskip \stretch{2}
@@ -135,7 +135,7 @@
       \zihao{2}
       \begin{tabular}{r@{：}l}
         论文题目 &
-        \parbox[t]{280pt}{\centering\zihao{-2}\sjtu@uline\sjtu@info@title@zh}
+        \parbox[t]{280pt}{\centering\zihao{-2}\csu@uline\csu@info@title@zh}
       \end{tabular}
       \par
     \endgroup
@@ -144,15 +144,15 @@
       \zihao{3}
       \begin{tabular}
         {>{\begin{CJKfilltwosides}{4.2\ccwd}}r<{\end{CJKfilltwosides}}@{：}c}
-        \sjtu@name@author@zh      & \sjtu@info@author@zh      \\\cline{2-2}
-        \sjtu@name@id@zh          & \makebox[180pt]{\sjtu@info@id} \\\cline{2-2}
-        \ifsjtu@type@course
-          \sjtu@name@course@zh    & \sjtu@info@course@zh      \\\cline{2-2}
+        \csu@name@author@zh      & \csu@info@author@zh      \\\cline{2-2}
+        \csu@name@id@zh          & \makebox[180pt]{\csu@info@id} \\\cline{2-2}
+        \ifcsu@type@course
+          \csu@name@course@zh    & \csu@info@course@zh      \\\cline{2-2}
         \else
-          \sjtu@name@major@zh     & \sjtu@info@major@zh       \\\cline{2-2}
+          \csu@name@major@zh     & \csu@info@major@zh       \\\cline{2-2}
         \fi
-        \sjtu@name@supervisor@zh  & \sjtu@info@supervisor@zh  \\\cline{2-2}
-        \sjtu@name@department@zh  & \sjtu@info@department@zh  \\\cline{2-2}
+        \csu@name@supervisor@zh  & \csu@info@supervisor@zh  \\\cline{2-2}
+        \csu@name@department@zh  & \csu@info@department@zh  \\\cline{2-2}
       \end{tabular}
       \par
     \endgroup
@@ -161,4 +161,4 @@
 }
 \endinput
 %%
-%% End of file `sjtuthesis-undergraduate.ltx'.
+%% End of file `csuthesis-undergraduate.ltx'.

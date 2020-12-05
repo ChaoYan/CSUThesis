@@ -1,4 +1,4 @@
-# Makefile for SJTUThesis
+# Makefile for CSUThesis
 
 # Basename of thesis
 THESIS = main

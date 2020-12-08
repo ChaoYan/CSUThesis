@@ -22,7 +22,7 @@
 %% The Current Maintainer of this work is Alexara Wu.
 %% 
 \ProvidesFile{csuthesis-graduate.ltx}
-  [2020/07/31 1.0.0rc7 Shanghai Jiao Tong University Thesis Template]
+  [2020/12/1 1.0.0rc7 Central South University Thesis Template]
 \geometry{%
   paper      = a4paper,
   top        = 3.5cm,
@@ -40,6 +40,26 @@
   \fancyfoot[L]{\ifcsu@review\relax\else\csu@info@fund\fi}
   \renewcommand\headrulewidth{0pt}
   \renewcommand\footrulewidth{0pt}
+}
+\fancypagestyle{front}{%
+  \fancyhf{}
+  \ifcsu@style@header@single
+    \fancyhead[C]{\zihao{-5}\csu@name@subject@zh}
+  \else
+    \fancyhead[RE,LO]{\zihao{-5}\csu@name@subject@zh}
+    \fancyhead[RO,LE]{\zihao{-5}\leftmark}
+  \fi
+  \fancyfoot[C]{%
+    \ifcsu@page@numbering
+      \zihao{-5}\csu@thepage@format{\csu@thepage}{\csu@lastpageref}%
+    \fi
+  }
+  \renewcommand\headrule{%
+    \hrule\@height2.25pt\@width\headwidth
+    \vskip 0.75pt
+    \hrule\@height0.75pt\@width\headwidth
+    \vskip-3.75pt
+  }
 }
 \fancypagestyle{plain}{%
   \fancyhf{}

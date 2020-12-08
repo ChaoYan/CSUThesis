@@ -22,31 +22,43 @@
 %% The Current Maintainer of this work is Alexara Wu.
 %% 
 \ProvidesFile{csuthesis-undergraduate.ltx}
-  [2020/07/31 1.0.0rc7 Shanghai Jiao Tong University Thesis Template]
+[2020/12/01 1.0.0rc7 Central South University Thesis Template]
 \geometry{%
   paper      = a4paper,
-  vmargin    = {84bp, 72bp},
-  hmargin    = 90bp,
-  headheight = 60bp,
-  headsep    = 12bp,
+  vmargin    = 2.5cm,
+  hmargin    = {3cm, 2cm},
+  % headheight = 3cm,
+  headsep    = 0.67\baselineskip,
 }
 \pagestyle{fancy}
 \ifcsu@language@chinese
-  \newcommand\csu@thepage@format[2]{第~{#1}~页\,共~{#2}~页}
+  \newcommand\csu@thepage@format[2]{第~{#1}~页\hspace{\ccwd}共~{#2}~页}
 \else
   \newcommand\csu@thepage@format[2]{--~~Page~~{#1}~~of~~{#2}~~--}
 \fi
-\fancypagestyle{plain}{%
+\newcommand{\plainhead}{%
   \fancyhf{}
   \fancyhead[L]{%
-    \includegraphics[height=32pt]%
-      {csu-vi-logo-\csu@style@header@logo@color.pdf}
+    \includegraphics[height=0.8cm]%
+    {csu-vi-logo-\csu@style@header@logo@color.pdf}
   }
   \fancyhead[R]{%
     \parbox[b]{0.7\textwidth}{%
       \raggedleft\zihao{-5}\heiti\MakeUppercase{\csu@info@title}
     }
   }
+}
+\fancypagestyle{front}{%
+  \plainhead
+  \fancyfoot[C]{%
+    \ifcsu@page@numbering
+      \zihao{-5}\csu@thepage%
+    \fi
+  }
+  \renewcommand\headrulewidth{0.75pt}
+}
+\fancypagestyle{plain}{%
+  \plainhead
   \fancyfoot[C]{%
     \ifcsu@page@numbering
       \zihao{-5}\csu@thepage@format{\csu@thepage}{\csu@lastpageref}%
@@ -55,55 +67,55 @@
   \renewcommand\headrulewidth{0.75pt}
 }
 \ctexset{%
-  subsection/format = \zihao{-4}\normalfont,
+  chapter/number  = \arabic{chapter},
+  section/format += \zihao{-4},
+  subsection/format += \kaishu,
 }
 \renewcommand\cftchapfont{\normalfont}
 \renewcommand\cftchapleader{\normalfont\cftdotfill{\cftdotsep}}
 \renewcommand\cftchappagefont{\normalfont}
-\ifcsu@type@bachelor
-  \csusetup{
-    style = {
-      frontmatter-numbering = false,
+\csusetup{
+  style = {
+      % frontmatter-numbering = false,
       indent-headings = fixed,
     },
-  }
-\fi
+}
 \NewDocumentEnvironment{abstract}{}{%
   \csu@chapter*[\csu@name@abstract@zh]{%
-    \csu@info@title@zh \vskip 2ex
+    \zihao{-2}\csu@info@title@zh \vskip 2ex
     \begingroup
-      \zihao{4}
-      \csu@name@abstract@zh
+    \zihao{3}
+    \csu@name@abstract@zh
     \endgroup
   }[\csu@name@abstract]%
 }{%
   \vskip 3ex \noindent
   \begingroup
-    \zihao{-4}
-    \heiti\csu@name@keywords@zh
+  \zihao{-4}
+  \heiti\csu@name@keywords@zh
   \endgroup
   \begingroup
-    \zihao{5}
-    \csu@clist@use{\csu@info@keywords@zh}{，}
+  \zihao{-4}
+  \csu@clist@use{\csu@info@keywords@zh}{\hspace{\ccwd}}
   \endgroup
 }
 \NewDocumentEnvironment{abstract*}{}{%
   \csu@chapter*[\csu@name@abstract@en]{%
-    \MakeUppercase\csu@info@title@en \vskip 2ex
+    \zihao{-2}\normalfont\bfseries\csu@info@title@en \vskip 2ex
     \begingroup
-      \zihao{4}
-      \MakeUppercase\csu@name@abstract@en
+    \zihao{3}
+    \MakeUppercase\csu@name@abstract@en
     \endgroup
   }[]
 }{%
   \vskip 3ex \noindent
   \begingroup
-    \zihao{-4}\bfseries
-    \csu@name@keywords@en
+  \zihao{-4}\bfseries
+  \csu@name@keywords@en
   \endgroup
   \begingroup
-    \zihao{5}
-    \csu@clist@use{\csu@info@keywords@en}{, }
+  \zihao{-4}
+  \csu@clist@use{\csu@info@keywords@en}{\hspace{2ex}}
   \endgroup
 }
 \RenewDocumentCommand{\maketitle}{}{%
@@ -114,49 +126,39 @@
   \cleardoublepage
   \thispagestyle{empty}
   \begin{center}
-    \kaishu
-    \vspace*{48pt}
-    \begingroup
-      \includegraphics[height=96pt]%
-        {csu-vi-name-\csu@style@title@logo@color.pdf}
-      \par
-    \endgroup
-    {\fontsize{32}{42}\selectfont\csu@name@subject@zh\par}
-    \vskip 6pt
-    {\zihao{-2}\MakeUppercase\csu@name@subject@en\par}
-    \vskip 16pt
-    \begingroup
-      \includegraphics[height=86pt]%
-        {csu-vi-badge-\csu@style@title@logo@color.pdf}
-      \par
-    \endgroup
-    \vskip \stretch{2}
-    \begingroup
-      \zihao{2}
-      \begin{tabular}{r@{：}l}
-        论文题目 &
-        \parbox[t]{280pt}{\centering\zihao{-2}\csu@uline\csu@info@title@zh}
-      \end{tabular}
-      \par
-    \endgroup
-    \vskip \stretch{1}
-    \begingroup
-      \zihao{3}
-      \begin{tabular}
-        {>{\begin{CJKfilltwosides}{4.2\ccwd}}r<{\end{CJKfilltwosides}}@{：}c}
-        \csu@name@author@zh      & \csu@info@author@zh      \\\cline{2-2}
-        \csu@name@id@zh          & \makebox[180pt]{\csu@info@id} \\\cline{2-2}
-        \ifcsu@type@course
-          \csu@name@course@zh    & \csu@info@course@zh      \\\cline{2-2}
-        \else
-          \csu@name@major@zh     & \csu@info@major@zh       \\\cline{2-2}
-        \fi
-        \csu@name@supervisor@zh  & \csu@info@supervisor@zh  \\\cline{2-2}
-        \csu@name@department@zh  & \csu@info@department@zh  \\\cline{2-2}
-      \end{tabular}
-      \par
-    \endgroup
-    \vskip 32pt
+  \sffamily\mdseries
+  \vspace*{22pt}
+  \begingroup
+  \includegraphics[height=3cm]%
+  {csu-vi-logo-\csu@style@title@logo@color.pdf}
+  \par
+  \endgroup
+  {\fontsize{45}{56}\selectfont\csu@name@subject@zh\par}
+  \vskip 6pt
+    {\zihao{1}\sffamily\MakeUppercase\csu@name@subject@en\par}
+  \vskip \stretch{1}
+  \begingroup
+  \zihao{-2}
+  \begin{tabular}
+    {>{\begin{CJKfilltwosides}{4\ccwd}}r<{\end{CJKfilltwosides}}@{ : }>{\kaishu\centering\arraybackslash}m{11\ccwd}}
+    题目                    & \csu@info@title@zh      \\\cline{2-2}
+    \csu@name@author@zh     & \csu@info@author@zh     \\\cline{2-2}
+    \ifcsu@type@course
+    \csu@name@id@zh         & \csu@info@id            \\\cline{2-2}
+    \csu@name@course@zh     & \csu@info@course@zh     \\\cline{2-2}
+    \else
+    \fi
+    \csu@name@supervisor@zh & \csu@info@supervisor@zh \\\cline{2-2}
+    \csu@name@department@zh & \csu@info@department@zh \\\cline{2-2}
+    \csu@name@major@zh      & \csu@info@major@zh      \\\cline{2-2}
+  \end{tabular}
+  \par
+  \endgroup
+  \vskip \stretch{1}
+  {\zihao{2}本科生院制}
+  \vskip 12pt
+    {\zihao{-2}\csu@date{\csu@date@format@zh}{\csu@info@date}}
+  \vspace{32pt}
   \end{center}
 }
 \endinput

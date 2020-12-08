@@ -21,9 +21,16 @@
 %% 
 %% The Current Maintainer of this work is Alexara Wu.
 %% 
+%  changes:
+%  - add fancystyle(front)
+%  - delete zihao auto
+%  - update head log default color
+%  - update chapter/section format
+%  - update caption format
+
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{csuthesis}
-  [2020/07/31 1.0.0rc7 Shanghai Jiao Tong University Thesis Template]
+  [2020/12/01 1.0.0rc7 Central South University Thesis Template]
 \hyphenation{CSU-Thesis}
 \def\csuthesis{CSU\textsc{Thesis}}
 \def\version{1.0.0rc7}
@@ -128,10 +135,9 @@
     choices = {
       -4,
       5,
-      auto,
       false,
     },
-    initial = auto,
+    initial = -4,
   },
   latinfontset = {
     choices = {
@@ -160,16 +166,9 @@
 \ifcsu@type@master
   \csu@type@graduatetrue
 \fi
-\ifcsu@zihao@auto
-  \ifcsu@type@graduate
-    \def\csu@zihao{-4}
-  \else
-    \def\csu@zihao{5}
-  \fi
-\fi
 \PassOptionsToClass{zihao=\csu@zihao}{ctexbook}
 \PassOptionsToPackage{no-math,quiet}{fontspec}
-\LoadClass[a4paper,UTF8,scheme=plain,linespread=1.3]{ctexbook}[2018/04/01]
+\LoadClass[a4paper,UTF8,scheme=plain,linespread=\ifcsu@type@graduate 20pt\else 1.5\fi]{ctexbook}[2018/04/01]
 \AtEndOfClass{
   \ifcsu@type@graduate
     \input{csuthesis-graduate.ltx}
@@ -264,7 +263,7 @@
       blue,
       black,
     },
-    initial = black,
+    initial = blue,
   },
   float-number-separator = {
     name = fl@num@sep,
@@ -373,8 +372,8 @@
 \newcommand\csu@name@def[2]{%
   \@namedef{csu@name@#1}{#2}
 }
-\csu@name@def{school@zh}{上海交通大学}
-\csu@name@def{school@en}{Shanghai Jiao Tong University}
+\csu@name@def{school@zh}{中南大学}
+\csu@name@def{school@en}{Central South University}
 \ifcsu@type@graduate
   \ifcsu@type@doctor
     \csu@name@def{degree@type@zh}{博士}
@@ -414,24 +413,24 @@
   \ifcsu@type@course
     \csu@name@def{degree@type@zh}{}
     \csu@name@def{degree@type@en}{}
-    \csu@name@def{thesis@type}{课程论文}
+    \csu@name@def{thesis@type}{课程报告}
     \csu@name@def{thesis@kind}{\csu@name@thesis@type}
     \csu@name@def{subject@zh}{\csu@name@thesis@type}
-    \csu@name@def{subject@en}{Course Paper}
+    \csu@name@def{subject@en}{Course Report}
   \else
-    \csu@name@def{degree@type@zh}{学士}
+    \csu@name@def{degree@type@zh}{本科}
     \csu@name@def{degree@type@en}{Bachelor}
     \csu@name@def{thesis@type}{学位论文}
-    \csu@name@def{thesis@kind}{毕业设计（论文）}
-    \csu@name@def{subject@zh}{\csu@name@degree@type@zh\csu@name@thesis@type}
-    \csu@name@def{subject@en}{Thesis of \csu@name@degree@type@en}
+    \csu@name@def{thesis@kind}{毕业设计(论文)}
+    \csu@name@def{subject@zh}{\csu@name@degree@type@zh\csu@name@thesis@kind}
+    \csu@name@def{subject@en}{GRADUATION DESIGN(THESIS)}
   \fi
   \csu@name@def{author@zh}{学生姓名}
   \csu@name@def{id@zh}{学生学号}
   \csu@name@def{supervisor@zh}{指导教师}
   \csu@name@def{course@zh}{课程名称}
-  \csu@name@def{major@zh}{专业}
-  \csu@name@def{department@zh}{学院(系)}
+  \csu@name@def{major@zh}{专业班级}
+  \csu@name@def{department@zh}{学院}
   \csu@name@def{digest}{英文大摘要}
 \fi
 \csu@name@def{orig@subtitle@zh}{原创性声明}
@@ -819,7 +818,7 @@
   \pagenumbering{Roman}
   \def\csu@thepage{\thepage}
   \def\csu@lastpageref{\lastpageref{pagesLTS.Roman}}
-  \pagestyle{plain}
+  \pagestyle{front}
 }
 \renewcommand\mainmatter{%
   \cleardoublepage
@@ -828,6 +827,7 @@
   \csu@set@float@fontsizetrue
   \pagenumbering{arabic}
   \def\csu@lastpageref{\lastpageref{pagesLTS.arabic}}
+  \pagestyle{plain}
 }
 \renewcommand\backmatter{%
   \cleardoublepage
@@ -840,23 +840,29 @@
     titleformat  = {},
     aftername    = \quad,
     afterindent  = true,
-    beforeskip   = {\ifcsu@type@graduate 0pt\else 1ex\fi},
-    afterskip    = {\ifcsu@type@graduate 3ex\else 4ex\fi},
+    beforeskip   = {\ifcsu@type@graduate 0pt\else \baselineskip\fi},
+    afterskip    = {\ifcsu@type@graduate 3ex\else \baselineskip\fi},
+    fixskip      = true,
   },
   section = {%
     format       = \zihao{4}\bfseries\heiti,
     afterindent  = true,
-    afterskip    = {1ex \@plus .2ex},
+    aftername    = \quad,
+    beforeskip   = 0pt,
+    afterskip    = 0pt,
   },
   subsection = {%
     format       = \zihao{-4}\bfseries\heiti,
     afterindent  = true,
-    afterskip    = {1ex \@plus .2ex},
+    aftername    = \quad,
+    beforeskip   = 0pt,
+    afterskip    = 0pt,
   },
   subsubsection = {%
     format       = \zihao{-4}\normalfont,
     afterindent  = true,
-    afterskip    = {1ex \@plus .2ex},
+    beforeskip   = 0pt,
+    afterskip    = 0pt,
   },
   paragraph/afterindent    = true,
   subparagraph/afterindent = true,

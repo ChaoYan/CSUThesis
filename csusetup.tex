@@ -15,12 +15,12 @@
     % 标题
     %   可使用“\\”命令手动控制换行
     %
-    title           = {上海交通大学学位论文 \LaTeX{} 模板示例文档},
+    title           = {中南大学 \LaTeX{} 文档模板},
     title*          = {A Sample Document for \LaTeX-based CSU Thesis Template},
     %
     % 关键词
     %
-    keywords        = {上海交大, 饮水思源, 爱国荣校},
+    keywords        = {中南大学, 知行合一, 经世致用},
     keywords*       = {CSU, master thesis, XeTeX/LaTeX template},
     %
     % 姓名
@@ -99,6 +99,7 @@
 
 % 参考文献支持宏包
 \usepackage[backend=biber,style=gb7714-2015,gbnamefmt=lowercase,gbpub=false,gbpunctin=false]{biblatex}
+\renewcommand{\bibfont}{\zihao{5}\kaishu}
 % 导入参考文献数据库
 \addbibresource{bibdata/thesis.bib}
 

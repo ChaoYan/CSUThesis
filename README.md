@@ -1,6 +1,6 @@
 # CSUThesis 示例模板
 
-[![CSUTeX](https://img.shields.io/badge/CSUTheis-v1.0.0-green.svg)](https://github.com/ChaoYan/CSUTeX)
+[![CSUTeX](https://img.shields.io/badge/CSUTheis-v1.0.0-green.svg)](https://github.com/ChaoYan/CSUThesis)
 
 ## 欢迎使用中南大学论文模板
 
@@ -66,7 +66,7 @@ make wordcount                # 论文字数统计
 
 ### 成为贡献者
 
-这个仓库是面向用户的**示例模版**，如果你有很好的排版示例，可以提交到此仓库与大家分享。如果你想要为 CSUThesis 文档类贡献代码，可移步 [CSUTeX](https://github.com/ChaoYan/CSUTeX)。在贡献之前，你可以从[这些问题](https://github.com/ChaoYan/CSUThesis/issues?q=is%3Aissue+is%3Aopen+label%3Agood-first-issue)开始熟悉贡献代码的流程。除了提交 Pull Request 之外，还有以下方式可以进行贡献：
+这个仓库是面向用户的**示例模版**，如果你有很好的排版示例，可以提交到此仓库与大家分享。在贡献之前，你可以熟悉贡献代码的流程。除了提交 Pull Request 之外，还有以下方式可以进行贡献：
 
 * 帮助我们解答同学们的[问题](https://github.com/ChaoYan/CSUThesis/issues?utf8=%E2%9C%93&q=is%3Aissue+is%3Aopen+label%3Atype%2Fquestion+)，这些问题你也可能遇到过并且知道如何解决；
 * 与我们一起维护项目的 [Wiki 文档](https://github.com/ChaoYan/CSUThesis/wiki)，Wiki 任何人都可以直接编辑；

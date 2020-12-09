@@ -168,7 +168,7 @@
 \fi
 \PassOptionsToClass{zihao=\csu@zihao}{ctexbook}
 \PassOptionsToPackage{no-math,quiet}{fontspec}
-\LoadClass[a4paper,UTF8,scheme=plain,linespread=\ifcsu@type@graduate 20pt\else 1.5\fi]{ctexbook}[2018/04/01]
+\LoadClass[a4paper,UTF8,scheme=plain,linespread=\ifcsu@type@graduate 1.3\else 1.5\fi]{ctexbook}[2018/04/01]
 \AtEndOfClass{
   \ifcsu@type@graduate
     \input{csuthesis-graduate.ltx}

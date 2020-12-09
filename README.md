@@ -23,7 +23,7 @@ git clone https://github.com/ChaoYan/CSUThesis.git
 
 [Overleaf](https://www.overleaf.com?r=b3b31f49&rm=d&rs=b) 用户可以从下面的模版链接创建自己的项目。
 
-[![Overleaf](https://img.shields.io/badge/overleaf-csuthesis-green.svg)](https://www.overleaf.com/latex/templates/csuthesis-latex-thesis-template-for-central-south-university/mkdwbyjbtfgg?r=b3b31f49&rm=d&rs=b) 
+[![Overleaf](https://img.shields.io/badge/overleaf-csuthesis-green.svg)](https://www.overleaf.com/latex/templates/csuthesis/xrjzkvdjmmhy) 
 
 ## 模板使用
 

@@ -31,7 +31,7 @@ git clone https://github.com/ChaoYan/CSUThesis.git
 
 如果你不熟悉 LaTeX 的编译流程，请**不要**直接使用编译器进行编译。针对不同的平台，模版提供了相应的编译脚本。
 
-### Visial Studio Code 用户
+### Visual Studio Code 用户
 
 推荐使用LaTex Workshop插件提供的 `latexmk(latexmkrc)` 进行编译。如下图，点击按钮，直接编译生成 main.pdf：
 
@@ -59,8 +59,6 @@ make wordcount                # 论文字数统计
 .\Compile.bat cleanall        # 删除 main.pdf 和所有中间文件
 .\Compile.bat wordcount       # 论文字数统计
 ```
-
-更多关于模板的实现细节以及使用信息，请查看使用文档 `csuthesis.pdf`。
 
 ## 反馈与贡献
 

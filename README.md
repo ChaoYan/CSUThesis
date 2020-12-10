@@ -7,6 +7,8 @@
 本示例模板是应用中南大学学位论文（非官方）LaTeX 文档类 CSUThesis 的一个完整实现。演示了排版中常用的例子，包括公式、表格、算法、参考文献等。
 用户可以参考或者直接基于此示例文档撰写论文。
 
+[![eg.md.png](http://s63.555889.xyz/2020/12/10/e1ca9fde6b237623b2116cb7f79f7c17.md.png)](http://img62.com/image/v5dVCr)
+
 请注意 CSUThesis 目前仅支持 XeTeX 引擎，字符编码仅支持 UTF-8。
 
 ## 获取模板
@@ -25,9 +27,16 @@ git clone https://github.com/ChaoYan/CSUThesis.git
 
 [![Overleaf](https://img.shields.io/badge/overleaf-csuthesis-green.svg)](https://www.overleaf.com/latex/templates/csuthesis/xrjzkvdjmmhy) 
 
-## 模板使用
+## 使用模板
 
 如果你不熟悉 LaTeX 的编译流程，请**不要**直接使用编译器进行编译。针对不同的平台，模版提供了相应的编译脚本。
+
+### Visial Studio Code 用户
+
+推荐使用LaTex Workshop插件提供的 `latexmk(latexmkrc)` 进行编译。如下图，点击按钮，直接编译生成 main.pdf：
+
+[![60f0133f70a54c83de6b99f1e6d8e9c4.md.jpg](http://s62.555889.xyz/2020/12/10/60f0133f70a54c83de6b99f1e6d8e9c4.md.jpg)](http://img62.com/image/v5d4ZW)
+
 
 ### Linux 与 macOS 用户
 

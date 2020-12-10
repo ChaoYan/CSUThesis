@@ -3,7 +3,7 @@
 # Set environment variables.
 
 # Set timezone.
-$ENV{'TZ'}='Asia/Shanghai';
+$ENV{'TZ'}='Asia/Changsha';
 
 # Ensure './texmf//' is in '$TEXINPUTS'.
 ensure_path( 'TEXINPUTS', './texmf//' );
@@ -11,6 +11,8 @@ ensure_path( 'TEXINPUTS', './texmf//' );
 # Use xelatex with latexmk.
 $pdf_mode = 5;
 $postscript_mode = $dvi_mode = 0;
+$xelatex = "xelatex -file-line-error -halt-on-error -interaction=nonstopmode -synctex=1 %O %S";
+
 
 # Always try to embed fonts, ignoring licensing flags, etc.
 $xdvipdfmx = 'xdvipdfmx -E -o %D %O %S';

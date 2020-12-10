@@ -7,7 +7,7 @@
 %% csuthesis.dtx  (with options: `class')
 %% 
 %% Copyright (C) 2009-2017 by weijianwen <weijianwen@gmail.com>
-%%           (C) 2018-2020 by CSUG
+%%           (C) 2018-2020 by SJTUG
 %% 
 %% This file may be distributed and/or modified under the
 %% conditions of the LaTeX Project Public License, either version 1.3c
@@ -835,24 +835,24 @@
 }
 \ctexset{%
   chapter = {%
-    format       = \zihao{3}\bfseries\heiti\centering,
+    format       = \zihao{3}\mdseries\heiti\centering,
     nameformat   = {},
     titleformat  = {},
     aftername    = \quad,
     afterindent  = true,
-    beforeskip   = {\ifcsu@type@graduate 0pt\else \baselineskip\fi},
+    beforeskip   = {\ifcsu@type@graduate 3ex\else \baselineskip\fi},
     afterskip    = {\ifcsu@type@graduate 3ex\else \baselineskip\fi},
     fixskip      = true,
   },
   section = {%
-    format       = \zihao{4}\bfseries\heiti,
+    format       = \zihao{4}\mdseries\heiti,
     afterindent  = true,
     aftername    = \quad,
     beforeskip   = 0pt,
     afterskip    = 0pt,
   },
   subsection = {%
-    format       = \zihao{-4}\bfseries\heiti,
+    format       = \zihao{-4}\mdseries\heiti,
     afterindent  = true,
     aftername    = \quad,
     beforeskip   = 0pt,

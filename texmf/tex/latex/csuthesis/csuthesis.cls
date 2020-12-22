@@ -8,6 +8,7 @@
 %% 
 %% Copyright (C) 2009-2017 by weijianwen <weijianwen@gmail.com>
 %%           (C) 2018-2020 by SJTUG
+%%           (C) 2020-2021 by chaoyan <chaoyan@88.com>
 %% 
 %% This file may be distributed and/or modified under the
 %% conditions of the LaTeX Project Public License, either version 1.3c

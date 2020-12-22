@@ -4,7 +4,8 @@
 
 ## 欢迎使用中南大学论文模板
 
-本示例模板是应用中南大学学位论文（非官方）LaTeX 文档类 CSUThesis 的一个完整实现。演示了排版中常用的例子，包括公式、表格、算法、参考文献等。
+本示例模板是应用中南大学学位论文（非官方）LaTeX 文档类 CSUThesis 的一个完整实现，包括了本科生、硕士生和博士生论文模板，甚至还包括课堂报告模板(beta)。演示了排版中常用的例子，包括公式、表格、算法、参考文献等。
+另外，模板中的校徽等图片素材是由作者本人修改的矢量图，边缘更圆润，清晰度更高、字体更标准。
 用户可以参考或者直接基于此示例文档撰写论文。
 
 [![eg.md.png](http://s63.555889.xyz/2020/12/10/e1ca9fde6b237623b2116cb7f79f7c17.md.png)](http://img62.com/image/v5dVCr)
@@ -15,7 +16,7 @@
 
 ### 下载模版
 
-普通用户可以直接 `clone` 或者在 [Github](https://github.com/ChaoYan/CSUThesis) 页面下载仓库代码。
+普通用户可以直接 `clone` 或者[直接点此](https://gh.api.99988866.xyz/https://github.com/ChaoYan/CSUThesis/archive/master.zip)下载仓库代码。
 
 ```bash
 git clone https://github.com/ChaoYan/CSUThesis.git

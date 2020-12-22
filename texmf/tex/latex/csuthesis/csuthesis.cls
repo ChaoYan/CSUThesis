@@ -27,6 +27,7 @@
 %  - update head log default color
 %  - update chapter/section format
 %  - update caption format
+%  - add empty day of date
 
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{csuthesis}
@@ -177,6 +178,7 @@
   \fi
 }
 \RequirePackage{xparse}
+\RequirePackage{xifthen}
 \RequirePackage{etoolbox}
 \RequirePackage{filehook}
 \RequirePackage{environ}
@@ -337,14 +339,18 @@
     \expandafter\csu@@process@date\csu@@date\@nil
   \fi
 }
-\newcommand\csu@date@format@zh[3]{#1 年 \number#2 月 \number#3 日}
+\newcommand\csu@date@format@zh[3]{%
+#1 年 \number#2 月\ifthenelse{\isempty{#3}}{}{ \number#3 日}%
+}
 \newcommand\csu@date@month@en[1]{%
   \ifcase\number#1\or
     January\or February\or March\or April\or May\or June\or
     July\or August\or September\or October\or November\or December%
   \fi
 }
-\newcommand\csu@date@format@en[3]{\csu@date@month@en{#2} \number#3, #1}
+\newcommand\csu@date@format@en[3]{%
+\csu@date@month@en{#2}\ifthenelse{\isempty{#3}}{}{ \number#3}, #1%
+}
 \kv@define@key{csu}{name}{
   \kvsetkeys{csu@name}{#1}
 }

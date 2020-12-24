@@ -4,8 +4,10 @@
 
 ## 欢迎使用中南大学论文模板
 
-本示例模板是应用中南大学学位论文（非官方）LaTeX 文档类 CSUThesis 的一个完整实现，包括了本科生、硕士生和博士生论文模板，甚至还包括课堂报告模板(beta)。演示了排版中常用的例子，包括公式、表格、算法、参考文献等。
-另外，模板中的校徽等图片素材是由作者本人修改的矢量图，边缘更圆润，清晰度更高、字体更标准。
+本示例模板是应用中南大学学位论文（非官方）LaTeX 文档类 CSUThesis 的一个完整实现，包括了本硕博论文模板和课堂报告模板(beta)，演示了排版中常用的例子，包括公式、表格、算法、参考文献等。
+
+另外，模板中的校徽等素材是由模板作者修改的矢量图，边缘更圆润，清晰度更高、字体更标准。
+
 用户可以参考或者直接基于此示例文档撰写论文。
 
 [![eg.md.png](http://s63.555889.xyz/2020/12/10/e1ca9fde6b237623b2116cb7f79f7c17.md.png)](http://img62.com/image/v5dVCr)
@@ -34,7 +36,7 @@ git clone https://github.com/ChaoYan/CSUThesis.git
 
 ### Visual Studio Code 用户
 
-推荐使用LaTex Workshop插件提供的 `latexmk(latexmkrc)` 进行编译。如下图，点击按钮，直接编译生成 main.pdf：
+推荐使用LaTeX Workshop插件提供的 **latexmk(latexmkrc)** 进行编译。如下图，点击按钮，直接编译生成 main.pdf：
 
 [![60f0133f70a54c83de6b99f1e6d8e9c4.md.jpg](http://s62.555889.xyz/2020/12/10/60f0133f70a54c83de6b99f1e6d8e9c4.md.jpg)](http://img62.com/image/v5d4ZW)
 

@@ -1,6 +1,6 @@
 # CSUThesis 示例模板
 
-[![CSUTeX](https://img.shields.io/badge/CSUTheis-v1.0.0-green.svg)](https://github.com/ChaoYan/CSUThesis)
+[![CSUTeX](https://img.shields.io/badge/CSUTheis-v0.1.1-green.svg)](https://github.com/ChaoYan/CSUThesis)
 
 ## 欢迎使用中南大学论文模板
 
@@ -10,7 +10,7 @@
 
 用户可以参考或者直接基于此示例文档撰写论文。
 
-[![eg.md.png](http://s63.555889.xyz/2020/12/10/e1ca9fde6b237623b2116cb7f79f7c17.md.png)](http://img62.com/image/v5dVCr)
+预览模板请访问模板在[LaTeX Studio](https://latexstudio.net/index/details/index/mid/1011.html)上的页面。
 
 请注意 CSUThesis 目前仅支持 XeTeX 引擎，字符编码仅支持 UTF-8。
 
@@ -18,7 +18,7 @@
 
 ### 下载模版
 
-普通用户可以直接 `clone` 或者[直接点此](https://gh.api.99988866.xyz/https://github.com/ChaoYan/CSUThesis/archive/master.zip)下载仓库代码。
+普通用户可以直接 `clone` 或者[直接点此](https://ghproxy.com/https://github.com/ChaoYan/CSUThesis/archive/master.zip)下载仓库代码。
 
 ```bash
 git clone https://github.com/ChaoYan/CSUThesis.git

@@ -36,9 +36,7 @@ git clone https://github.com/ChaoYan/CSUThesis.git
 
 ### Visual Studio Code 用户
 
-推荐使用LaTeX Workshop插件提供的 **latexmk(latexmkrc)** 进行编译。如下图，点击按钮，直接编译生成 main.pdf：
-
-[![60f0133f70a54c83de6b99f1e6d8e9c4.md.jpg](http://s62.555889.xyz/2020/12/10/60f0133f70a54c83de6b99f1e6d8e9c4.md.jpg)](http://img62.com/image/v5d4ZW)
+推荐使用LaTeX Workshop插件提供的 **latexmk(latexmkrc)** 菜单进行编译。点击按钮后，直接编译生成 main.pdf：
 
 
 ### Linux 与 macOS 用户
